@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float initial_moveSpeed;
     public GameObject spawn;
     public int Life;
-    
-    
+
+    PhotonView view;
 
     private Vector2 direction_right;
     private Vector2 direction_up;
@@ -21,18 +23,17 @@ public class PlayerMovement : MonoBehaviour
         Respawn();
         InitialLife = Life;
         moveSpeed = initial_moveSpeed;
-
+        view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        direction_right = new Vector2(horizontalMovement, 0);
-        transform.Translate(direction_right * moveSpeed * Time.deltaTime);
+        if (view.IsMine)
+        {
+            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+            transform.position += input.normalized * moveSpeed * Time.deltaTime;
 
-        float verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        direction_up = new Vector2(0, verticalMovement);
-        transform.Translate(direction_up * moveSpeed * Time.deltaTime);
+        }
         
     
     }
