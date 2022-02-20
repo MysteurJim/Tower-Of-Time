@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Ennemi : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Ennemi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            Destroy(collision.gameObject);
+            PhotonNetwork.Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
     }

@@ -12,7 +12,10 @@ public class Fire : MonoBehaviour
     public Transform LuncherFire;
 
     PhotonView view;
-
+    private void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
     void Update()
     {
 

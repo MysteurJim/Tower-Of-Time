@@ -194,7 +194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1062266681453288945, guid: bb3d039ac8e42e541a9e0f48a21a8cc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -218,7 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &184398805
 BoxCollider2D:
@@ -6425,7 +6425,7 @@ Transform:
   - {fileID: 1536498447}
   - {fileID: 1035515427}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1998259535
 GameObject:
@@ -6558,7 +6558,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4316161462044611750, guid: 05ba632525515b74f96fd2627c76cda9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4316161462044611750, guid: 05ba632525515b74f96fd2627c76cda9, type: 3}
       propertyPath: m_LocalPosition.x

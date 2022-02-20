@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemiShoot : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class EnemiShoot : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         if(player != null)
         {
-            GameObject speel = Instantiate(projectile, transform.position, Quaternion.identity);
+            GameObject speel = PhotonNetwork.Instantiate(projectile.name, transform.position, Quaternion.identity);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Transform pos = player.GetComponent<Transform>();
             Vector2 direction = (pos.position - transform.position).normalized;
