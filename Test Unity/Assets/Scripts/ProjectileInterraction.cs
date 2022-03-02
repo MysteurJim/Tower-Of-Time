@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ProjectileInterraction : MonoBehaviour
 {
@@ -9,11 +10,11 @@ public class ProjectileInterraction : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
         }
         if (collision.gameObject.CompareTag("Player") & this.tag == "Ennemi")
         {
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
             collision.gameObject.GetComponent<PlayerMovement>().Respawn();
         }
     }

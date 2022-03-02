@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float initial_moveSpeed;
     public GameObject spawn;
     public int Life;
+    public Sprite up;
+    public Sprite down;
 
     PhotonView view;
 
@@ -16,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction_up;
     private float moveSpeed;
     private int InitialLife;
+
+
 
 
     private void Start()
@@ -30,9 +34,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (view.IsMine)
         {
-            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+            float vertical = Input.GetAxisRaw("Vertical");
+            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), vertical, 0);
             transform.position += input.normalized * moveSpeed * Time.deltaTime;
-
+            if (vertical > 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = up;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().sprite = down;
+            }
         }
         
     
