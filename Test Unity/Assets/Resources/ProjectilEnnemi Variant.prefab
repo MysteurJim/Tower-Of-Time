@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8094854361686592923, guid: 0925af67f8ffc83409cead107d0e16b8, type: 3}
       propertyPath: m_TagString
-      value: Ennemi
+      value: Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 8094854361686592924, guid: 0925af67f8ffc83409cead107d0e16b8, type: 3}
       propertyPath: m_RootOrder
