@@ -188,8 +188,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051631, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051631, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: obstacles
+      value: 
+      objectReference: {fileID: 1035515430}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
 --- !u!1 &519420028
@@ -6396,11 +6400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051625, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.69
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051625, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051625, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6437,6 +6441,18 @@ PrefabInstance:
     - target: {fileID: 5505411112055051628, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Name
       value: Ennemi
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051631, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: obstacles
+      value: 
+      objectReference: {fileID: 1035515430}
+    - target: {fileID: 5505411112055051631, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: DesiredDistanceMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051631, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: DesiredDistanceMin
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}

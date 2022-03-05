@@ -12,7 +12,7 @@ public class ProjectileInterraction : MonoBehaviour
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
-        if (collision.gameObject.CompareTag("Player") & this.tag == "Ennemi")
+        if (collision.gameObject.CompareTag("Player") & this.tag == "Bullet")
         {
             PhotonNetwork.Destroy(this.gameObject);
             collision.gameObject.GetComponent<PlayerMovement>().Respawn();

@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     private int InitialLife;
 
 
-
-
     private void Start()
     {
         Respawn();
@@ -43,7 +41,9 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                GetComponent<SpriteRenderer>().sprite = down;
+                if (vertical < 0){
+                    GetComponent<SpriteRenderer>().sprite = down;
+                }
             }
         }
         
