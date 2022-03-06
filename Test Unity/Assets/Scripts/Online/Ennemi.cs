@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using UnityEngine.Tilemaps;
 
 public class Ennemi : MonoBehaviour
 {
     // L'ennemi essaiera de rester entre DesiredDistanceMin et DesiredDistanceMax
-    public int DesiredDistanceMin; 
+    public int DesiredDistanceMin;
     public int DesiredDistanceMax;
 
     public float moveSpeed;
@@ -61,8 +60,24 @@ public class Ennemi : MonoBehaviour
             GameObject player = collision.gameObject;
             player.GetComponent<PlayerMovement>().Respawn();
         }
-        
 
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, collision.transform.position - this.transform.position);
+
+            Vector3 normal = hit.normal;
+            normal = hit.transform.TransformDirection(normal);
+
+            if (normal == hit.transform.up || normal == -hit.transform.up)
+            {
+                this.vel.y = 0;
+            }
+
+            if (normal == hit.transform.right || normal == -hit.transform.right)
+            {
+                this.vel.x = 0;
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -89,7 +104,7 @@ public class Ennemi : MonoBehaviour
         if (zoneDistance > DesiredDistanceMax - DesiredDistanceMin)
             return toPlayer;
 
-        float scale = - (DesiredDistanceMax - DesiredDistanceMin) * (rand(1) * rand(2)) + zoneDistance;
+        float scale = -(DesiredDistanceMax - DesiredDistanceMin) * (rand(1) * rand(2)) + zoneDistance;
         return scale * toPlayer;
     }
 
@@ -126,14 +141,14 @@ public class Ennemi : MonoBehaviour
     {
         Vector3 push = new Vector3(0, 0, 0);
 
-        for (float i = 0; i < 4; i++)
+        float size = Mathf.Max(this.hitbox.size.x, this.hitbox.size.y);
+
+        for (float i = 0; i < 8; i++)
         {
-            Vector3 dir = Rotate(Vector3.right, i * Mathf.PI / 2);
+            Vector3 dir = Rotate(Vector3.right, i * Mathf.PI / 4);
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir);
 
-            float size = i % 2 == 0 ? this.hitbox.size.x : this.hitbox.size.y;
-
-            if (hit.collider != null && hit.distance < size * 1.5f)
+            if (hit.collider != null && hit.distance < size * .5f)
             {
                 push += Rotate(dir, Mathf.PI);
             }
@@ -142,6 +157,8 @@ public class Ennemi : MonoBehaviour
         return push;
     }
 
+
+    // Gizmos for debugging
     bool m_Started;
     void OnDrawGizmos()
     {
@@ -151,7 +168,7 @@ public class Ennemi : MonoBehaviour
         {
             //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
             Gizmos.DrawWireCube(this.hitbox.transform.position, hitbox.size * 3f);
-            Gizmos.DrawLine(this.transform.position, this.transform.position + this.vel);
+            Gizmos.DrawLine(this.transform.position, this.transform.position + AvoidWalls());
             Gizmos.DrawWireSphere(transform.position, DesiredDistanceMax);
             Gizmos.DrawWireSphere(transform.position, DesiredDistanceMin);
         }

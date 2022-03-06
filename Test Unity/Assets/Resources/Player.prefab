@@ -124,8 +124,8 @@ GameObject:
   - component: {fileID: 6499501793983527253}
   - component: {fileID: 6499501793983527255}
   - component: {fileID: 6499501793983527252}
-  - component: {fileID: 8743996274147111867}
-  - component: {fileID: 6499501794700261726}
+  - component: {fileID: -3391572454825299742}
+  - component: {fileID: 7154442849792545474}
   - component: {fileID: 429648696300201256}
   - component: {fileID: -33119887550735904}
   - component: {fileID: 7657173597765228530}
@@ -250,7 +250,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5144448, y: 2.502668}
   m_EdgeRadius: 0
---- !u!114 &8743996274147111867
+--- !u!114 &-3391572454825299742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6499501793983527254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b1dcf44623030448cb07f99041a722, type: 3}
+  m_Script: {fileID: 11500000, guid: b3a89779b8175a2469ca9bc203657055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 8094854361686592923, guid: 0925af67f8ffc83409cead107d0e16b8, type: 3}
@@ -267,7 +267,7 @@ MonoBehaviour:
   maxDamage: 25
   projectilForce: 10
   LuncherFire: {fileID: 6499501793534401470}
---- !u!114 &6499501794700261726
+--- !u!114 &7154442849792545474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6499501793983527254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a857cc94f11605c4a9cd37589a659a6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f4d65504af850b4b8e6801770a3a9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initial_moveSpeed: 20

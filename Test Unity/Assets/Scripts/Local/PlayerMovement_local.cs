@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement_local : MonoBehaviour
 {
     public float initial_moveSpeed;
     public GameObject spawn;

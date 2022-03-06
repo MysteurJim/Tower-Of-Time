@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5505411112055051625}
   - component: {fileID: 5505411112055051630}
-  - component: {fileID: 5505411112055051631}
-  - component: {fileID: 5505411112055051627}
+  - component: {fileID: 7440853725034476092}
+  - component: {fileID: 1814181285338849270}
   - component: {fileID: 5505411112055051624}
   m_Layer: 0
   m_Name: Ennemi
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5505411112055051631
+--- !u!114 &7440853725034476092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,14 +94,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5505411112055051628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba44454b626c7e478dc387003cde53b, type: 3}
+  m_Script: {fileID: 11500000, guid: 38e0fd4a484d5b140a1b327fb2074846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6499501793983527254, guid: ec6b2db8f25a93f4b9750cf20f323674, type: 3}
-  DesiredDistanceMin: 10
-  DesiredDistanceMax: 20
+  DesiredDistanceMin: 5
+  DesiredDistanceMax: 10
   moveSpeed: 4
---- !u!114 &5505411112055051627
+  initialHitPoints: 0
+--- !u!114 &1814181285338849270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5505411112055051628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906ca165428193a429aee859dc286f2f, type: 3}
+  m_Script: {fileID: 11500000, guid: a78c5bd46b39d7a4f9fc26aba9b65e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 1
