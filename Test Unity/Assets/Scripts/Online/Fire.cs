@@ -28,6 +28,7 @@ public class Fire : MonoBehaviour
                 Vector2 myPos = transform.position;
                 Vector2 direction = (mousePos - myPos).normalized;
                 speel.GetComponent<Rigidbody2D>().velocity = direction * projectilForce;
+                speel.GetComponent<ProjectileInteraction>().damage = this.minDamage;
             }
         }
     }

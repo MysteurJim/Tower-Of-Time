@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Ennemi : MonoBehaviour
 {
     // L'ennemi essaiera de rester entre DesiredDistanceMin et DesiredDistanceMax
-    public int DesiredDistanceMin;
+    public int DesiredDistanceMin; 
     public int DesiredDistanceMax;
 
     public float moveSpeed;
@@ -15,9 +15,11 @@ public class Ennemi : MonoBehaviour
     private GameObject player => GameObject.FindWithTag("Player");
 
     // Parce que velocity existe deja
-    private Vector3 vel;
-    private int hitPoints;
-    public int initialHitPoints;
+    private Vector2 vel;
+    private Vector2 acceleration;
+
+    private float hitPoints;
+    public float initialHitPoints;
 
     // Objet representant la hitbox du GameObject
     private BoxCollider2D hitbox;
@@ -27,27 +29,25 @@ public class Ennemi : MonoBehaviour
     {
         this.hitPoints = initialHitPoints;
         this.hitbox = this.GetComponent<BoxCollider2D>();
-        this.vel = Vector3.zero;
+        this.vel = Vector2.zero;
         m_Started = true;
     }
 
     private void Update()
     {
-        Vector3 acceleration = Vector3.zero;
+        acceleration = Vector2.zero;
 
         acceleration += StayInZone();
-
         acceleration = AddRandom(acceleration);
-
         acceleration += AvoidEnemies();
-
         acceleration += AvoidWalls();
 
         this.vel += acceleration;
-
         this.vel *= this.vel.magnitude > this.moveSpeed ? this.moveSpeed / this.vel.magnitude : 1;
 
-        transform.position += Time.deltaTime * this.vel;
+        Vector3 v = this.vel;
+
+        transform.position +=  Time.deltaTime * v;
     }
 
 
@@ -60,7 +60,7 @@ public class Ennemi : MonoBehaviour
             GameObject player = collision.gameObject;
             player.GetComponent<PlayerMovement>().Respawn();
         }
-
+        
         if (collision.gameObject.CompareTag("Wall"))
         {
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, collision.transform.position - this.transform.position);
@@ -83,15 +83,34 @@ public class Ennemi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            this.hitPoints -= collision.GetComponent<ProjectileInteraction>().damage;
+
             PhotonNetwork.Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+
+            if (this.hitPoints <= 0)
+            {
+                GameObject.Destroy(this.gameObject);
+                return;
+            }
+            
+            this.vel += collision.GetComponent<Rigidbody2D>().velocity;
+            StartCoroutine(TookDamage());
         }
+    }
+
+    private IEnumerator TookDamage()
+    {
+        this.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+
+        yield return new WaitForSeconds(0.1f);
+
+        this.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
     }
 
 
     // ----- Movement Manager -----
     private float rand(float seed = 0f) => Mathf.PerlinNoise(Time.time, seed);
-    private Vector3 StayInZone()
+    private Vector2 StayInZone()
     {
         Vector3 toPlayer = player.transform.position - this.transform.position;
         float zoneDistance = toPlayer.magnitude - DesiredDistanceMin;
@@ -104,11 +123,11 @@ public class Ennemi : MonoBehaviour
         if (zoneDistance > DesiredDistanceMax - DesiredDistanceMin)
             return toPlayer;
 
-        float scale = -(DesiredDistanceMax - DesiredDistanceMin) * (rand(1) * rand(2)) + zoneDistance;
+        float scale = - (DesiredDistanceMax - DesiredDistanceMin) * (rand(1) * rand(2)) + zoneDistance;
         return scale * toPlayer;
     }
 
-    private Vector3 AddRandom(Vector3 v)
+    private Vector2 AddRandom(Vector3 v)
     {
         Vector3 normal = Rotate(v, Mathf.PI / 2);
 
@@ -117,7 +136,7 @@ public class Ennemi : MonoBehaviour
         return v + normal;
     }
 
-    private Vector3 AvoidEnemies()
+    private Vector2 AvoidEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ennemi");
 
@@ -137,7 +156,7 @@ public class Ennemi : MonoBehaviour
         return push;
     }
 
-    private Vector3 AvoidWalls()
+    private Vector2 AvoidWalls()
     {
         Vector3 push = new Vector3(0, 0, 0);
 
@@ -168,12 +187,12 @@ public class Ennemi : MonoBehaviour
         {
             //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
             Gizmos.DrawWireCube(this.hitbox.transform.position, hitbox.size * 3f);
-            Gizmos.DrawLine(this.transform.position, this.transform.position + AvoidWalls());
             Gizmos.DrawWireSphere(transform.position, DesiredDistanceMax);
             Gizmos.DrawWireSphere(transform.position, DesiredDistanceMin);
         }
     }
 
+    // Miscelanneous
     public Vector3 Rotate(Vector3 v, float angle)
     {
         return new Vector3(Mathf.Cos(angle) * v.x - Mathf.Sin(angle) * v.y,

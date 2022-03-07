@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ProjectileInterraction : MonoBehaviour
+public class ProjectileInteraction_local : MonoBehaviour
 {
 
     private void OnTriggerEnter2D(Collider2D collision)
