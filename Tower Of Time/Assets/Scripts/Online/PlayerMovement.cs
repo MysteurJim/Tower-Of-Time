@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public int Life;
     public Sprite up;
     public Sprite down;
+    public Sprite left;
+    public Sprite right;
 
     PhotonView view;
 
@@ -46,6 +48,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (vertical < 0){
                     GetComponent<SpriteRenderer>().sprite = down;
+                }
+            }
+            if (horizontal > 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = right;
+            }
+            else
+            {
+                if (horizontal < 0)
+                {
+                    GetComponent<SpriteRenderer>().sprite = left;
                 }
             }
         }

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DesiredDistanceMin: 5
   DesiredDistanceMax: 10
-  moveSpeed: 4
+  moveSpeed: 6
   initialHitPoints: 0
 --- !u!114 &1814181285338849270
 MonoBehaviour:
