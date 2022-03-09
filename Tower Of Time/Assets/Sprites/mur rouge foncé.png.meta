@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 3ce8188c0d8220140b559a68c7d005c7
+guid: 2244ce0038b754c468c3ab1623395767
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5510550549178551155
-    second: Murs (2)_0
+      213: 1223175399723191487
+    second: "mur rouge fonc\xE9_0"
   - first:
-      213: -1948804197882237391
-    second: Murs (2)_1
+      213: 4615373163941260979
+    second: "mur rouge fonc\xE9_1"
   - first:
-      213: -4862889125577123921
-    second: Murs (2)_2
-  - first:
-      213: -1114082029253281075
-    second: Murs (2)_3
-  - first:
-      213: 8484076238052061064
-    second: Murs (2)_4
+      213: 3882217258787597356
+    second: "mur rouge fonc\xE9_2"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Murs (2)_0
+      name: "mur rouge fonc\xE9_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3446
-        width: 59
-        height: 62
+        x: 59
+        y: 3427
+        width: 69
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +126,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b0f904788697c40800000000000000
-      internalID: 5510550549178551155
+      spriteID: fbc4f7e9b8799f010800000000000000
+      internalID: 1223175399723191487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Murs (2)_1
+      name: "mur rouge fonc\xE9_1"
       rect:
         serializedVersion: 2
-        x: 60
-        y: 3447
-        width: 59
-        height: 61
+        x: 136
+        y: 3427
+        width: 69
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13e607048e474f4e0800000000000000
-      internalID: -1948804197882237391
+      spriteID: 3bee69670791d0040800000000000000
+      internalID: 4615373163941260979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Murs (2)_2
+      name: "mur rouge fonc\xE9_2"
       rect:
         serializedVersion: 2
-        x: 120
-        y: 3446
-        width: 60
-        height: 62
+        x: 227
+        y: 3427
+        width: 68
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,50 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa79ddfda1c838cb0800000000000000
-      internalID: -4862889125577123921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Murs (2)_3
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 3446
-        width: 61
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dca36bb0c4cf980f0800000000000000
-      internalID: -1114082029253281075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Murs (2)_4
-      rect:
-        serializedVersion: 2
-        x: 243
-        y: 3446
-        width: 60
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88fec60536e7db570800000000000000
-      internalID: 8484076238052061064
+      spriteID: c2cecea270860e530800000000000000
+      internalID: 3882217258787597356
       vertices: []
       indices: 
       edges: []
