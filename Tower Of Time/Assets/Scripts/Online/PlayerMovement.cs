@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite down;
     public Sprite left;
     public Sprite right;
+    public Fire fire;
 
     PhotonView view;
 

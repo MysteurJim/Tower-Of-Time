@@ -16,9 +16,9 @@ public class Fire : MonoBehaviour
     {
         view = GetComponent<PhotonView>();
     }
+
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
             if (view.IsMine)
@@ -32,5 +32,4 @@ public class Fire : MonoBehaviour
             }
         }
     }
-
 }
