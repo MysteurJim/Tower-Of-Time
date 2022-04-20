@@ -10,9 +10,9 @@ public class ShootProjectile : Ability
     public float Damage => damage;
     public float Speed => speed;
 
-    public ShootProjectile(God god, PlayerController playerController, GameObject projectile, float cooldown, float damage, float speed)
-    : base (god, playerController, cooldown)
+    public void Setup(God god, PlayerController playerController, float cooldown, GameObject projectile, float damage, float speed)
     {
+        base.Setup(god, playerController, cooldown);
         this.projectile = projectile;
         this.damage = damage;
         this.speed = speed;

@@ -15,25 +15,28 @@ public class PlayerController : MonoBehaviour
     {
         view = GetComponent<PhotonView>();
 
-        god = null;
-        SetGod(new TestGod(this));
+        gameObject.AddComponent(typeof(TestGod));
+        god = gameObject.GetComponent<TestGod>();
+        god.Setup(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && view.IsMine && god.Main.TryUse())
+        if (Input.GetButton("Fire1"))
         {
-            StartCoroutine(god.Main.StartCooldown());
+            god.UseMainAtk();
+        }
+
+        if (Input.GetKey("q"))
+        {
+            god.UseQ();
         }
     }
 
-    public bool SetGod(God god, bool enforce = false)
+    void OnDrawGizmos()
     {
-        if (this.god != null && !enforce)
-            return false;
-          
-        this.god = god;
-        return true;
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 100, 1f);
     }
 }

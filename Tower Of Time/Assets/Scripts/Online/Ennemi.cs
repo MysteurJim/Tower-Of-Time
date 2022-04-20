@@ -83,19 +83,21 @@ public class Ennemi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            this.hitPoints -= collision.GetComponent<ProjectileInteraction>().damage;
-
+            TakeHit(collision.GetComponent<ProjectileInteraction>().damage);
             PhotonNetwork.Destroy(collision.gameObject);
-
-            if (this.hitPoints <= 0)
-            {
-                GameObject.Destroy(this.gameObject);
-                return;
-            }
             
             this.vel += collision.GetComponent<Rigidbody2D>().velocity;
             StartCoroutine(TookDamage());
         }
+    }
+
+    // Damage Manager
+    public void TakeHit(float damage)
+    { 
+        this.hitPoints -= damage;
+
+        if (this.hitPoints <= 0)
+            GameObject.Destroy(this.gameObject);
     }
 
     private IEnumerator TookDamage()

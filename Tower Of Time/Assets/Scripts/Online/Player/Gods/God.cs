@@ -1,18 +1,24 @@
 using Photon.Pun;
+using UnityEngine;
 
-public abstract class God
+public abstract class God : MonoBehaviour
 {
     protected PlayerController playerController;
-    protected Ability main;
+    protected Ability mainAtk;
+    protected Ability q;
 
     public PlayerController PlayerController => playerController;
-    public Ability Main => main;
+    public Ability MainAtk => mainAtk;
+    public Ability Q => q;
 
     public PhotonView View => playerController.View;
-    public God(PlayerController playerController)
+
+    public virtual void Setup(PlayerController playerController)
     {
         this.playerController = playerController;
     }
 
-    
+    public virtual bool UseMainAtk() => mainAtk.TryUse();
+
+    public virtual bool UseQ() => q.TryUse(); 
 }
