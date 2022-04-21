@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
     
     public Vector3 position => transform.position;
     public God God => god;
-    public PhotonView View => view; 
+    public PhotonView View => view;
+    public Transform SwordPlacement;
+    public LayerMask enemyLayers;
 
     // Start is called before the first frame update
     void Start()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Ennemi : MonoBehaviour
+public class EnnemiMouvement : MonoBehaviour
 {
     // L'ennemi essaiera de rester entre DesiredDistanceMin et DesiredDistanceMax
     public int DesiredDistanceMin; 
@@ -18,8 +18,6 @@ public class Ennemi : MonoBehaviour
     private Vector2 vel;
     private Vector2 acceleration;
 
-    private float hitPoints;
-    public float initialHitPoints;
 
     // Objet representant la hitbox du GameObject
     private BoxCollider2D hitbox;
@@ -27,7 +25,7 @@ public class Ennemi : MonoBehaviour
 
     private void Start()
     {
-        this.hitPoints = initialHitPoints;
+        
         this.hitbox = this.GetComponent<BoxCollider2D>();
         this.vel = Vector2.zero;
         m_Started = true;
@@ -83,31 +81,16 @@ public class Ennemi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            TakeHit(collision.GetComponent<ProjectileInteraction>().damage);
+            this.GetComponent<EnnemiController>().TakeHit(collision.GetComponent<ProjectileInteraction>().damage);
             PhotonNetwork.Destroy(collision.gameObject);
             
             this.vel += collision.GetComponent<Rigidbody2D>().velocity;
-            StartCoroutine(TookDamage());
+            //StartCoroutine(TookDamage());
         }
+        
     }
 
-    // Damage Manager
-    public void TakeHit(float damage)
-    { 
-        this.hitPoints -= damage;
 
-        if (this.hitPoints <= 0)
-            GameObject.Destroy(this.gameObject);
-    }
-
-    private IEnumerator TookDamage()
-    {
-        this.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-
-        yield return new WaitForSeconds(0.1f);
-
-        this.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-    }
 
 
     // ----- Movement Manager -----

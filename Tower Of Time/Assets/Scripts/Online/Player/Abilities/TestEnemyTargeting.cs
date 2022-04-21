@@ -23,7 +23,7 @@ public class TestEnemyTargeting : Targeting
         }
         else
         {
-            target.GetComponent<Ennemi>().TakeHit(damage);
+            target.GetComponent<EnnemiController>().TakeHit(damage);
         }
     }
 
