@@ -1,7 +1,13 @@
 fileFormatVersion: 2
-guid: 6c6facba1b039b54c865a3d839559e8c
+guid: 516b1330c51f8cd45af158e75f1120f7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2919599013267274128
+    second: Dalles bleu_0
+  - first:
+      213: -6404885310237139161
+    second: Dalles bleu_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 27
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,64 +109,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dalle bleu_0
+      name: Dalles bleu_0
       rect:
         serializedVersion: 2
-        x: 592
-        y: 3305
-        width: 5
-        height: 7
+        x: 114
+        y: 3346
+        width: 67
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b29b601147cb6880800000000000000
-      internalID: -8616574379781025102
+      spriteID: 0768f978a208b77d0800000000000000
+      internalID: -2919599013267274128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dalle bleu_1
+      name: Dalles bleu_1
       rect:
         serializedVersion: 2
-        x: 258
-        y: 3159
-        width: 116
-        height: 69
+        x: 217
+        y: 3344
+        width: 66
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f218f01e3c263cd90800000000000000
-      internalID: -7078705595862253265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dalle bleu_2
-      rect:
-        serializedVersion: 2
-        x: 446
-        y: 3118
-        width: 115
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 237a4dca8d20dea20800000000000000
-      internalID: 3093131648709207858
+      spriteID: 72f9230beb64d17a0800000000000000
+      internalID: -6404885310237139161
       vertices: []
       indices: 
       edges: []
