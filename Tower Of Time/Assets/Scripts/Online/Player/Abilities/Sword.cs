@@ -45,15 +45,32 @@ public class Sword : Ability
         foreach(Collider2D ennemy in hitEnemies)
         {
             ennemy.GetComponent<EnnemiController>().TakeHit(damage);
-  
+            StartCoroutine(KnockBack(ennemy));
         }
     }
 
+    IEnumerator KnockBack(Collider2D ennemy)
+    {
+        yield return new WaitForSeconds(0.1f);
+        ennemy.GetComponent<EnnemiMouvement>().knock = true;
+        Collider2D[] detectEnemies = Physics2D.OverlapCircleAll(playerController.SwordPlacement.position, attackRange+5, playerController.enemyLayers);
+        if(detectEnemies.Length != 0 && detectEnemies[0].GetComponent<EnnemiMouvement>().knock)
+        {
+            StartCoroutine(KnockBack(ennemy));
+        }
+        else
+        {
+            ennemy.GetComponent<EnnemiMouvement>().knock = false;
+        }
+    }
+
+    //DEBUG
     private void OnDrawGizmos()
     {
         if (playerController.SwordPlacement == null)
             return;
         Gizmos.DrawWireSphere(playerController.SwordPlacement.position, attackRange);
+        Gizmos.DrawWireSphere(playerController.SwordPlacement.position, attackRange+5);
     }
 
 }

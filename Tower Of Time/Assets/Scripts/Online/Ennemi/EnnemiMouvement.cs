@@ -11,6 +11,9 @@ public class EnnemiMouvement : MonoBehaviour
 
     public float moveSpeed;
 
+    //Repoussage
+    public bool knock;
+
     // Reference interne au joueur 
     private GameObject player => GameObject.FindWithTag("Player");
 
@@ -29,25 +32,34 @@ public class EnnemiMouvement : MonoBehaviour
         this.hitbox = this.GetComponent<BoxCollider2D>();
         this.vel = Vector2.zero;
         m_Started = true;
+        this.knock = false;
     }
 
     private void Update()
     {
         acceleration = Vector2.zero;
-
-        acceleration += StayInZone();
-        acceleration = AddRandom(acceleration);
-        acceleration += AvoidEnemies();
-        acceleration += AvoidWalls();
-
-        this.vel += acceleration;
-        this.vel *= this.vel.magnitude > this.moveSpeed ? this.moveSpeed / this.vel.magnitude : 1;
+        if (!knock)
+        {
+            acceleration += StayInZone();
+            acceleration = AddRandom(acceleration);
+            acceleration += AvoidEnemies();
+            acceleration += AvoidWalls();
+            this.vel += acceleration;
+            this.vel *= this.vel.magnitude > this.moveSpeed ? this.moveSpeed / this.vel.magnitude : 1;
+        }
+        else
+        {
+            acceleration = (transform.position-player.transform.position).normalized;
+            this.vel += acceleration;
+        }
+        
 
         Vector3 v = this.vel;
 
         transform.position +=  Time.deltaTime * v;
     }
 
+   
 
     // ----- Collision Manager -----
     private void OnCollisionEnter2D(Collision2D collision)

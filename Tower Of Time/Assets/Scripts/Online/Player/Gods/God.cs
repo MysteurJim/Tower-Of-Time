@@ -6,10 +6,12 @@ public abstract class God : MonoBehaviour
     protected PlayerController playerController;
     protected Ability mainAtk;
     protected Ability q;
+    protected string name;
 
     public PlayerController PlayerController => playerController;
     public Ability MainAtk => mainAtk;
     public Ability Q => q;
+    public string Name => Name;
 
     public PhotonView View => playerController.View;
 
