@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class TestEnemyTargeting : Targeting
 {
-    private float damage;
-
-    public float Damage => damage;
-
-    public void Setup(God god, PlayerController playerController, float cooldown, float damage)
+    public override void Setup(God god, PlayerController playerController, float cooldown)
     {
         base.Setup(god, playerController, cooldown);
-        this.damage = damage;
     }
 
     public override void UseWithTarget(bool foundTarget = false)
     {
-        Debug.Log($"Used Q {(foundTarget ? "with" : "without")} target");
         if (!foundTarget)
         {
-            StartCoroutine(WaitForTargetSelection("Ennemi"));
+            runningCoroutine = StartCoroutine(WaitForTargetSelection("Ennemi"));
         }
         else
         {
-            target.GetComponent<EnnemiController>().TakeHit(damage);
+            target.GetComponent<EnnemiController>().Stun(new WaitForSeconds(10));
         }
     }
 

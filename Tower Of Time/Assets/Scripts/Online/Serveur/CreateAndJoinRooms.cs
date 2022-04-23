@@ -20,7 +20,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Salle intermédiaire");
+        PhotonNetwork.LoadLevel("Salle Int Medusa");
     }
 
 }

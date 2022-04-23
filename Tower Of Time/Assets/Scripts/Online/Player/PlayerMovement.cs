@@ -74,6 +74,4 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(co_spawn - co);
         Life -= 1;
     }
-
-
 }

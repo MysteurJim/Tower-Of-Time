@@ -15,15 +15,22 @@ public class Sword : Ability
     public float Damage => damage;
     public float Speed => speed;
 
-   
+   void Start()
+   {
+        Transform sword = null;
+        int i = 0;
+        while (i < playerController.transform.childCount && (sword = playerController.transform.GetChild(i)).name != "Sword")
+            i++;
+
+        sword.GetComponent<SwordMouvement>().enabled = true;
+   }
 
 
     public void Setup(God god, PlayerController playerController, float cooldown, float damage)
     {
         base.Setup(god, playerController, cooldown);
         this.damage = damage;
-       
-
+        playerController.gameObject.GetComponentInChildren<SwordMouvement>().enabled = true;
         this.description = $"Hit with a sword in front of player";
     }
 

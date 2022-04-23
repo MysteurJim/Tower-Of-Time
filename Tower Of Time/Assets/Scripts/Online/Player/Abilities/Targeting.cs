@@ -5,6 +5,7 @@ public abstract class Targeting : Ability
 {
     protected GameObject target;
     protected bool isSelectingTarget;
+    protected Coroutine runningCoroutine;
 
     public GameObject Target => target;
     public bool IsSelectingTarget => isSelectingTarget;
@@ -12,6 +13,8 @@ public abstract class Targeting : Ability
     public override void Setup(God god, PlayerController playerController, float cooldown)
     {
         base.Setup(god, playerController, cooldown);
+        target = null;
+        isSelectingTarget = false;
     }
 
     // Renvoie le GameObject avec le tag Ennemi le plus proche de la souris
@@ -37,37 +40,56 @@ public abstract class Targeting : Ability
         return closest;
     }
 
-    public IEnumerator WaitForTargetSelection(string tag)
+    protected IEnumerator WaitForTargetSelection(string tag)
     {
         isSelectingTarget = true;
-        GameObject closest = FindTarget(tag);
+        target = FindTarget(tag);
 
 
-        closest?.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        target?.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
 
-        while (!Input.GetButtonDown("Fire1") || closest == null)
+        while (!Input.GetButtonDown("Fire1") || target == null)
         {
             GameObject next = FindTarget(tag);
 
-            if (next != closest)
+            if (next != target)
             {
-                closest?.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-                closest = next;
-                closest?.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                target?.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+                target = next;
+                target?.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
             }
 
             yield return null;
         }
 
-        closest.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-
-        target = closest;
+        target.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+        StartCoroutine(StartCooldown());
         UseWithTarget(true);
-        target = null;
         isSelectingTarget = false;
+    }
+
+    public override bool TryUse()
+    {
+        if(isSelectingTarget)
+        {
+            target?.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+            isSelectingTarget = false;
+            StopCoroutine(runningCoroutine);
+            return true;
+        }
+        else
+        {   
+            if (!isOnCooldown)
+            {
+                Use();
+                return true;
+            }
+
+            return false;
+        }
     }
 
     public override void Use() => UseWithTarget();
 
-    public abstract void UseWithTarget(bool foundTarget = false);
+    public abstract void UseWithTarget(bool foundZone = false);
 }

@@ -5,7 +5,10 @@ using Photon.Pun;
 
 public class EnemiShoot : MonoBehaviour
 {
+    private bool isShooting;
+    private Coroutine shooting;
 
+    public bool IsShooting => isShooting;
     public float cooldown;
     public GameObject projectile;
     public float projectilForce;
@@ -15,8 +18,25 @@ public class EnemiShoot : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(ShootPlayer());
+        StartShooting();
+    }
 
+    public void StartShooting()
+    {
+        if (!isShooting)
+        {
+            isShooting = true;
+            shooting = StartCoroutine(ShootPlayer());
+        }
+    }
+
+    public void StopShooting()
+    {
+        if (isShooting)
+        {
+            isShooting = false;
+            StopCoroutine(shooting);
+        }
     }
 
     IEnumerator ShootPlayer()
@@ -29,7 +49,7 @@ public class EnemiShoot : MonoBehaviour
             Transform pos = player.GetComponent<Transform>();
             Vector2 direction = (pos.position - transform.position).normalized;
             speel.GetComponent<Rigidbody2D>().velocity = direction * projectilForce;
-            StartCoroutine(ShootPlayer());
+            shooting = StartCoroutine(ShootPlayer());
         }
     }
 }

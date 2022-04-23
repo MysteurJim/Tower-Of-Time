@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
@@ -16,7 +14,7 @@ public class ProjectileInteraction : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") & this.tag == "Bullet")
         {
             PhotonNetwork.Destroy(this.gameObject);
-            collision.gameObject.GetComponent<PlayerMovement>().Respawn();
+            collision.gameObject.GetComponent<PlayerController>().God.TakeHit(damage);
         }
     }
 }

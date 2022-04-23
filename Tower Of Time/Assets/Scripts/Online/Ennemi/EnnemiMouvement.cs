@@ -68,7 +68,7 @@ public class EnnemiMouvement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameObject player = collision.gameObject;
-            player.GetComponent<PlayerMovement>().Respawn();
+            player.GetComponent<PlayerController>().God.TakeHit(55f);
         }
         
         if (collision.gameObject.CompareTag("Wall"))
@@ -101,8 +101,6 @@ public class EnnemiMouvement : MonoBehaviour
         }
         
     }
-
-
 
 
     // ----- Movement Manager -----
@@ -172,6 +170,9 @@ public class EnnemiMouvement : MonoBehaviour
 
         return push;
     }
+
+
+
 
 
     // Gizmos for debugging

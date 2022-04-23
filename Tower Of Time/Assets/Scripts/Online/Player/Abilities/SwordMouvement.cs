@@ -10,10 +10,10 @@ public class SwordMouvement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 distance = mousePosition - transform.position;
-        Vector3 playerPosition = Player.GetComponent<Transform>().position;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 playerPosition = Player.GetComponent<Transform>().position;
+        Vector3 distance = mousePosition - playerPosition;
+
         float angle = Mathf.Atan(distance.y / distance.x);
         if(distance.x < 0)
         {

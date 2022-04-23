@@ -9,12 +9,33 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 28a2154ab9992b54cad99ee8c26bc5ec
   - enabled: 1
+    path: Assets/Scenes/Multi/ChooseCharacter.unity
+    guid: a9547c59dd8d3c1418ed79975c40f09f
+  - enabled: 1
     path: Assets/Scenes/Multi/Lobby.unity
     guid: 1ce60fa2d5886ce4282819d9bb41a128
   - enabled: 1
-    path: Assets/Scenes/Multi/Salle Boss Cronos.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Multi/Salle Int Medusa.unity
+    guid: 0f702e441b827d34aafc08a53d463a0c
+  - enabled: 1
+    path: Assets/Scenes/Multi/Salle Boss Medusa.unity
+    guid: 1137c253ae50a7e4da7f6ca65a6bf7f5
+  - enabled: 1
+    path: Assets/Scenes/Multi/Salle Int Minotaure.unity
+    guid: ae27596e174cd914da9cf2c665be1ce7
+  - enabled: 1
+    path: Assets/Scenes/Multi/Salle Boss Minotaure.unity
+    guid: 32574be47e57bb9418aeafed28c3a922
+  - enabled: 1
+    path: Assets/Scenes/Multi/Salle Int Charybde et Scylla.unity
+    guid: 283bbb5e774337b4aa3d72ab68979251
   - enabled: 1
     path: Assets/Scenes/Multi/Salle Boss Charybde et Scylla.unity
     guid: 7110bc89a53ed824c821e759746624cf
+  - enabled: 1
+    path: Assets/Scenes/Multi/Salle Int Cronos.unity
+    guid: 69f7cd91601f8e7428923f4f5944d4d9
+  - enabled: 1
+    path: Assets/Scenes/Multi/Salle Boss Cronos.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

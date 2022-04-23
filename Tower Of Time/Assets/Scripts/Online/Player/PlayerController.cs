@@ -1,5 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,23 +19,31 @@ public class PlayerController : MonoBehaviour
     {
         view = GetComponent<PhotonView>();
 
-        gameObject.AddComponent(typeof(TestGod));
-        god = gameObject.GetComponent<TestGod>();
+        gameObject.AddComponent(typeof(Demeter));
+        god = gameObject.GetComponent<Demeter>();
         god.Setup(this);
+
+        TilemapRenderer[] background = FindObjectsOfType<TilemapRenderer>(false);
+
+        foreach (TilemapRenderer tmR in background)
+        {
+            tmR.sortingOrder = -100 + (tmR.CompareTag("Wall") ? 1 : 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButton("Fire1"))
-        {
             god.UseMainAtk();
-        }
+        
 
-        if (Input.GetKey("q"))
-        {
+        if (Input.GetKeyDown("q"))
             god.UseQ();
-        }
+        
+
+        if (Input.GetKeyDown("e"))
+            god.UseE();
     }
 
     void OnDrawGizmos()
