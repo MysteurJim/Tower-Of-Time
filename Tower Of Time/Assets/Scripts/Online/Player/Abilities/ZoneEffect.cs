@@ -40,6 +40,7 @@ public abstract class ZoneEffect : Ability
         while (!Input.GetButtonDown("Fire1"))
         {
             effect.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Debug.Log(effect.GetComponent<CollisionHandlerForZoneEffects>().Collisions.Count);
             yield return null;
         }
 

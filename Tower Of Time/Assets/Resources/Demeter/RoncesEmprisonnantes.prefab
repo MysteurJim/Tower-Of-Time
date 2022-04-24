@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5646545571587265358}
   - component: {fileID: 6338976869723405486}
   - component: {fileID: 4420951697337319286}
-  m_Layer: 5
+  - component: {fileID: 7042628914837369430}
+  m_Layer: 0
   m_Name: RoncesEmprisonnantes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,8 +118,8 @@ PolygonCollider2D:
   m_GameObject: {fileID: 6076200951745611446}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a8d6d6131c0a54a4485dc8fffbcfb7f1, type: 2}
-  m_IsTrigger: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -623,6 +624,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6076200951745611446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f009e4b13f60724eac952c5c3f62863, type: 3}
+  m_Script: {fileID: 11500000, guid: 31bbd5a66f0c6fd458e141faa47e57d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &7042628914837369430
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6076200951745611446}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

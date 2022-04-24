@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
         {
             tmR.sortingOrder = -100 + (tmR.CompareTag("Wall") ? 1 : 0);
         }
+
+        Debug.Log("Test");
     }
 
     // Update is called once per frame

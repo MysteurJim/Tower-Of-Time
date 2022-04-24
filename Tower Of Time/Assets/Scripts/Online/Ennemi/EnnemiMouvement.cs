@@ -162,7 +162,7 @@ public class EnnemiMouvement : MonoBehaviour
             Vector3 dir = Rotate(Vector3.right, i * Mathf.PI / 4);
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir);
 
-            if (hit.collider != null && hit.distance < size * .5f)
+            if (hit.collider != null && hit.distance < size * .5f && hit.collider.gameObject.CompareTag("Wall"))
             {
                 push += Rotate(dir, Mathf.PI);
             }

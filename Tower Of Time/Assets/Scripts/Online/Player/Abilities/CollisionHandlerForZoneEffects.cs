@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisonHandlerForZoneEffects : MonoBehaviour
+public class CollisionHandlerForZoneEffects : MonoBehaviour
 {
     private List<GameObject> collisions;
 
@@ -14,7 +14,11 @@ public class CollisonHandlerForZoneEffects : MonoBehaviour
         collisions = new List<GameObject>();
     }
 
-    void OnCollisionEnter(Collision collision) => collisions.Add(collision.gameObject);
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Entered");
+        collisions.Add(collision.gameObject);
+    }
  
     void OnCollisionExit(Collision collision) => collisions.Remove(collision.gameObject);
 }

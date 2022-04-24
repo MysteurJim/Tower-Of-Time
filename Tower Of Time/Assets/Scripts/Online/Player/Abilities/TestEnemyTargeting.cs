@@ -18,6 +18,7 @@ public class TestEnemyTargeting : Targeting
         else
         {
             target.GetComponent<EnnemiController>().Stun(new WaitForSeconds(10));
+            target.GetComponent<EnnemiController>().Burn(new WaitForSeconds(10), 5f);
         }
     }
 

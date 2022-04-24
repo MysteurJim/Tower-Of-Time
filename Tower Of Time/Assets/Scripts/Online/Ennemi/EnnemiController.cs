@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnnemiController : MonoBehaviour
 {
-
     private float hitPoints;
     private float armor;
+    private StatusEffectsManager effects;
     private EnemiShoot shooter;
     private EnnemiMouvement movement;
 
@@ -16,6 +16,7 @@ public class EnnemiController : MonoBehaviour
     public BarManager HealthBar;
     public float HitPoints => hitPoints;
     public float Armor => Armor;
+    public StatusEffectsManager Effects => effects;
     public EnemiShoot Shooter => shooter;
     public EnnemiMouvement Movement => movement;
 
@@ -24,8 +25,11 @@ public class EnnemiController : MonoBehaviour
         hitPoints = initialHitPoints;
         armor = initialArmor;
         HealthBar.SetMaxHealth(initialHitPoints);
+        effects = GetComponent<StatusEffectsManager>();
         shooter = GetComponent<EnemiShoot>();
+        movement = GetComponent<EnnemiMouvement>();
     }
+
     // Damage Manager
     public void TakeHit(float damage)
     {
@@ -53,6 +57,7 @@ public class EnnemiController : MonoBehaviour
         Debug.Log("Set your heart ablaze!");
 
         bool isBurning = true;
+        effects.AddEffect("Burn");
         WaitForSeconds tick = new WaitForSeconds(.5f);
 
         IEnumerator KeepBurning()
@@ -68,6 +73,8 @@ public class EnnemiController : MonoBehaviour
             TakeHit(damage);
             yield return tick;
         }
+
+        effects.RemoveEffect("Burn");
     }
 
     public void Stun(WaitForSeconds duration) => StartCoroutine(StunCoroutine(duration));
@@ -76,6 +83,7 @@ public class EnnemiController : MonoBehaviour
         Debug.Log("Bonk");
 
         bool isStunned = true;
+        effects.AddEffect("Stun");
         shooter.StopShooting();
         
         IEnumerator StayStunned()
@@ -90,5 +98,7 @@ public class EnnemiController : MonoBehaviour
             yield return null;
 
         shooter.StartShooting();
+        
+        effects.RemoveEffect("Stun");
     }
 }
