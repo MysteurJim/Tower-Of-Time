@@ -14,6 +14,10 @@ public abstract class God : MonoBehaviour
     protected new string name;
     protected Ability e;
 
+    protected string arme;
+    protected string capacite;
+    protected string descrip;
+
     public PlayerController PlayerController => playerController;
     public float MaxHitPoints => maxHitPoints;
     public float HitPoints => hitPoints;
@@ -23,6 +27,10 @@ public abstract class God : MonoBehaviour
     public Ability Q => q;
     public string Name => Name;
     public Ability E => e;
+
+    public string Arme => arme;
+    public string Capacite => capacite;
+    public string Descript => descrip;
 
     public PhotonView View => playerController.View;
 

@@ -18,9 +18,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         view = GetComponent<PhotonView>();
-
+        /*
         gameObject.AddComponent(typeof(Demeter));
         god = gameObject.GetComponent<Demeter>();
+        */
+        gameObject.AddComponent(typeof(TestGod));
+        god = gameObject.GetComponent<TestGod>();
         god.Setup(this);
 
         TilemapRenderer[] background = FindObjectsOfType<TilemapRenderer>(false);

@@ -77,7 +77,7 @@ public class Sword : Ability
         if (playerController.SwordPlacement == null)
             return;
         Gizmos.DrawWireSphere(playerController.SwordPlacement.position, attackRange);
-        Gizmos.DrawWireSphere(playerController.SwordPlacement.position, attackRange+5);
+        Gizmos.DrawWireSphere(playerController.SwordPlacement.position, attackRange+2.5f);
     }
 
 }
