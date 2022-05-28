@@ -250,6 +250,7 @@ MonoBehaviour:
   left: {fileID: 8839091208923897238, guid: 7b3ff711e1e576d46a9db9f6ad3c458f, type: 3}
   right: {fileID: -407629773174416253, guid: 7b3ff711e1e576d46a9db9f6ad3c458f, type: 3}
   fire: {fileID: 0}
+  settings: {fileID: 1742557271920105685, guid: 07f8f1587127e4c4290bc4d2e2d83108, type: 3}
 --- !u!114 &429648696300201256
 MonoBehaviour:
   m_ObjectHideFlags: 0

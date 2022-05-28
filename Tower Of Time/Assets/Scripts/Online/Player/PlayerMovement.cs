@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite left;
     public Sprite right;
     public Fire fire;
+    public GameObject settings;
 
     PhotonView view;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction_up;
     private float moveSpeed;
     private int InitialLife;
+    private GameObject set;
 
 
     private void Start()
@@ -29,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         InitialLife = Life;
         moveSpeed = initial_moveSpeed;
         view = GetComponent<PhotonView>();
+        set = Instantiate(settings);
+        set.SetActive(false);
     }
 
     private void Update()
@@ -63,8 +67,13 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        
-    
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            set.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+
     }
 
     public void Respawn()

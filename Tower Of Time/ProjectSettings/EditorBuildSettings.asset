@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Multi/ChooseCharacter.unity
     guid: a9547c59dd8d3c1418ed79975c40f09f
   - enabled: 1
-    path: Assets/Scenes/Multi/Lobby.unity
+    path: Assets/Scenes/Lobby.unity
     guid: 1ce60fa2d5886ce4282819d9bb41a128
   - enabled: 1
     path: Assets/Scenes/Multi/Salle Int Medusa.unity
