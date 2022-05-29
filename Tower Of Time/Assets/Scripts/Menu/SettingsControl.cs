@@ -1,12 +1,15 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SettingsControl : MonoBehaviour
+public class SettingsControl : MonoBehaviourPunCallbacks
 {
     public Dropdown resolutionDropdown;
     public GameObject menu;
+    public GameObject player;
 
     Resolution[] resolutions;
 
@@ -33,6 +36,8 @@ public class SettingsControl : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        Time.timeScale = 1;
     }
 
     public void SetResolution (int resolutionIndex)
@@ -64,6 +69,27 @@ public class SettingsControl : MonoBehaviour
         
     }
 
-    
+    public void DisconnectPlayer()
+    {
+        
+        StartCoroutine(DisconnectAndLoad());
+    }
+
+    IEnumerator DisconnectAndLoad()
+    {
+        PhotonNetwork.Disconnect();
+        while (PhotonNetwork.IsConnected)
+        {
+            Debug.Log("[Multiplayer] - Waiting to disconnect");
+            yield return null;
+        }
+        Debug.Log("[Multiplayer] - Disconnected !");
+
+        SceneManager.LoadScene("Menu");
+
+    }
+
+
+
 
 }

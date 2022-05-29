@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         view = GetComponent<PhotonView>();
         set = Instantiate(settings);
         set.SetActive(false);
+        set.GetComponent<SettingsControl>().player = this.gameObject;
     }
 
     private void Update()
@@ -83,4 +85,6 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(co_spawn - co);
         Life -= 1;
     }
+
+   
 }

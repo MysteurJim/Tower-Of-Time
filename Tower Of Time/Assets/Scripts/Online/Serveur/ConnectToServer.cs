@@ -10,14 +10,29 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     
 
-    public void Connect()
+    public void ConnectOnline()
     {
         PhotonNetwork.ConnectUsingSettings();
+        
+    }
+
+    public void ConnectOffline()
+    {
+        PhotonNetwork.OfflineMode = true;
+        
     }
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinLobby();
+        if (PhotonNetwork.OfflineMode)
+        {
+            PhotonNetwork.CreateRoom("offline");
+            PhotonNetwork.LoadLevel("Salle Int Medusa");
+        }
+        else
+        {
+            PhotonNetwork.JoinLobby();
+        }
     }
 
     public override void OnJoinedLobby()
