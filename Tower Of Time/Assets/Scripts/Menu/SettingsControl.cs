@@ -78,14 +78,18 @@ public class SettingsControl : MonoBehaviourPunCallbacks
     IEnumerator DisconnectAndLoad()
     {
         PhotonNetwork.Disconnect();
+        Debug.Log("[Multiplayer] - Waiting to disconnect");
+        /*
         while (PhotonNetwork.IsConnected)
         {
-            Debug.Log("[Multiplayer] - Waiting to disconnect");
+            
             yield return null;
         }
+        */
         Debug.Log("[Multiplayer] - Disconnected !");
 
         SceneManager.LoadScene("Menu");
+        yield return true;
 
     }
 
