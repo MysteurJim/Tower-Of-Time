@@ -25,7 +25,7 @@ public class TestGod : God
 
         this.descrip = "Dieu Test il est pas fou.";
 
-        maxHitPoints = (hitPoints = 100f);
+
         armor = 10f;
     }
 }

@@ -19,8 +19,8 @@ public abstract class God : MonoBehaviour
     protected string descrip;
 
     public PlayerController PlayerController => playerController;
-    public float MaxHitPoints => maxHitPoints;
-    public float HitPoints => hitPoints;
+    //public float MaxHitPoints => maxHitPoints;
+    //public float HitPoints => hitPoints;
     public float Armor => armor;
     public bool IsInvincible => isInvicible;
     public Ability MainAtk => mainAtk;
@@ -44,14 +44,14 @@ public abstract class God : MonoBehaviour
     {
         if (!isInvicible)
         {
-            this.hitPoints -= damage * (1 - armor / (armor + 50));
+            playerController.PlayerHealth.currentHealth -= damage * (1 - armor / (armor + 50));
 
-            if (hitPoints <= 0)
+            if (playerController.PlayerHealth.currentHealth <= 0)
             {
-                gameObject.GetComponent<PlayerMovement>().Respawn();
-                hitPoints = maxHitPoints;
+                this.gameObject.GetComponent<PlayerMovement>().Respawn();
+                playerController.PlayerHealth.currentHealth = playerController.PlayerHealth.maxHealth;
             }
-
+            playerController.PlayerHealth.healthBarPlayer.SetHealthPlayer(playerController.PlayerHealth.currentHealth);
             StartCoroutine(TookDamage());
         }
     }
