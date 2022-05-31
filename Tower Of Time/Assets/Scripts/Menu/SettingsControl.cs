@@ -34,10 +34,9 @@ public class SettingsControl : MonoBehaviourPunCallbacks
         }
 
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-
-        Time.timeScale = 1;
+   
+        
     }
 
     public void SetResolution (int resolutionIndex)
@@ -87,7 +86,7 @@ public class SettingsControl : MonoBehaviourPunCallbacks
         }
         */
         Debug.Log("[Multiplayer] - Disconnected !");
-
+        PhotonNetwork.OfflineMode = false;
         SceneManager.LoadScene("Menu");
         yield return true;
 
