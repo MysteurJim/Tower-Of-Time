@@ -33,7 +33,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -185,10 +184,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      "mur rouge fonc\xE9_0": 1223175399723191487
-      "mur rouge fonc\xE9_1": 4615373163941260979
-      "mur rouge fonc\xE9_2": 3882217258787597356
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

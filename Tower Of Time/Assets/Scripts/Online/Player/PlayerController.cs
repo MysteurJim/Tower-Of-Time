@@ -5,13 +5,11 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
     private God god;
     private PhotonView view;
     
     public Vector3 position => transform.position;
     public God God => god;
-    public PlayerHealth PlayerHealth => playerHealth;
     public PhotonView View => view;
     public Transform SwordPlacement;
     public LayerMask enemyLayers;
@@ -27,7 +25,7 @@ public class PlayerController : MonoBehaviour
         gameObject.AddComponent(typeof(TestGod));
         god = gameObject.GetComponent<TestGod>();
         god.Setup(this);
-        playerHealth = GetComponent<PlayerHealth>();
+
         TilemapRenderer[] background = FindObjectsOfType<TilemapRenderer>(false);
 
         foreach (TilemapRenderer tmR in background)

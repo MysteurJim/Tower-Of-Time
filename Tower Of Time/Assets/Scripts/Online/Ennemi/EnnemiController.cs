@@ -13,7 +13,7 @@ public class EnnemiController : MonoBehaviour
 
     public float initialHitPoints;
     public float initialArmor;
-    public HealthBarEnnemie HealthBar;
+    public BarManager HealthBar;
     public float HitPoints => hitPoints;
     public float Armor => Armor;
     public StatusEffectsManager Effects => effects;
@@ -24,7 +24,7 @@ public class EnnemiController : MonoBehaviour
     {
         hitPoints = initialHitPoints;
         armor = initialArmor;
-        HealthBar.SetMaxHealthEnnemie(initialHitPoints);
+        HealthBar.SetMaxHealth(initialHitPoints);
         effects = GetComponent<StatusEffectsManager>();
         shooter = GetComponent<EnemiShoot>();
         movement = GetComponent<EnnemiMouvement>();
@@ -38,7 +38,7 @@ public class EnnemiController : MonoBehaviour
         if (this.hitPoints <= 0)
             GameObject.Destroy(this.gameObject);
         
-        HealthBar.SetHealthEnnemie(hitPoints);
+        HealthBar.SetHealth(hitPoints);
         StartCoroutine(TookDamage());
     }
 
