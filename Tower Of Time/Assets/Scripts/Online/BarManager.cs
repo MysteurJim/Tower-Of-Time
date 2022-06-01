@@ -16,5 +16,6 @@ public class BarManager : MonoBehaviour
     public void SetHealth(float health)
     {
         slider.value = health;
+
     }
 }

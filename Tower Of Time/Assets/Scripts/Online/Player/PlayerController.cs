@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public PhotonView View => view;
     public Transform SwordPlacement;
     public LayerMask enemyLayers;
+    public BarManager barManager;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
             tmR.sortingOrder = -100 + (tmR.CompareTag("Wall") ? 1 : 0);
         }
 
-        
+        barManager.SetMaxHealth(god.HitPoints);
     }
 
     // Update is called once per frame

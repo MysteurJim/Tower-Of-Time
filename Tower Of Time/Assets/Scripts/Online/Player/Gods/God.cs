@@ -19,6 +19,7 @@ public abstract class God : MonoBehaviour
     protected string descrip;
 
     public PlayerController PlayerController => playerController;
+    public BarManager BarManager => PlayerController.barManager;
     public float MaxHitPoints => maxHitPoints;
     public float HitPoints => hitPoints;
     public float Armor => armor;
@@ -51,6 +52,8 @@ public abstract class God : MonoBehaviour
                 gameObject.GetComponent<PlayerMovement>().Respawn();
                 hitPoints = maxHitPoints;
             }
+
+            PlayerController.barManager.SetHealth(this.hitPoints);
 
             StartCoroutine(TookDamage());
         }
