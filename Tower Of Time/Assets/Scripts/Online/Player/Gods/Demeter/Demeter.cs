@@ -19,5 +19,9 @@ public class Demeter : God
         playerController.gameObject.AddComponent(typeof(TestEnemyTargeting));
         e = playerController.gameObject.GetComponent<TestEnemyTargeting>();
         ((TestEnemyTargeting)e).Setup(this, playerController, 0f);
+
+        //A CHANGER
+        maxHitPoints = (hitPoints = 100f);
+        armor = 10f;
     }
 }

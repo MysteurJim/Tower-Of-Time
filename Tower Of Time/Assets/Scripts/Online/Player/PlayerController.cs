@@ -5,10 +5,11 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    private God god;
+    public God god;
     private PhotonView view;
     
     public Vector3 position => transform.position;
+
     public God God => god;
     public PhotonView View => view;
     public Transform SwordPlacement;
@@ -19,13 +20,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         view = GetComponent<PhotonView>();
-        /*
-        gameObject.AddComponent(typeof(Demeter));
-        god = gameObject.GetComponent<Demeter>();
-        */
-        gameObject.AddComponent(typeof(TestGod));
-        god = gameObject.GetComponent<TestGod>();
-        god.Setup(this);
+       
 
         TilemapRenderer[] background = FindObjectsOfType<TilemapRenderer>(false);
 
@@ -33,8 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             tmR.sortingOrder = -100 + (tmR.CompareTag("Wall") ? 1 : 0);
         }
-
-        barManager.SetMaxHealth(god.HitPoints);
+        DontDestroyOnLoad(transform.gameObject);
     }
 
     // Update is called once per frame

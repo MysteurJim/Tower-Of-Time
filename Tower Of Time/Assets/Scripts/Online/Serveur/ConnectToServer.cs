@@ -13,6 +13,10 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void ConnectOnline()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.JoinLobby();
+        }
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("Connecting...");
     }
@@ -30,7 +34,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         {
             Debug.Log("Connect Offline");
             PhotonNetwork.CreateRoom("offline");
-            PhotonNetwork.LoadLevel("Salle Int Medusa");
+            PhotonNetwork.LoadLevel("ChooseCharacter");
            
         }
         else
@@ -44,19 +48,21 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        if(PhotonNetwork.CountOfRooms == 0)
-        {
-            PhotonNetwork.CreateRoom("Online");
-
-        }
-        else
+        if (PhotonNetwork.CountOfRooms != 0)
         {
             PhotonNetwork.JoinRoom("Online");
+
         }
-
+        PhotonNetwork.CreateRoom("Online");
+        StartCoroutine(WaitForJoin());
         
-        
-        SceneManager.LoadScene("Lobby");
 
+    }
+
+    IEnumerator WaitForJoin()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        PhotonNetwork.LoadLevel("ChooseCharacter");
     }
 }

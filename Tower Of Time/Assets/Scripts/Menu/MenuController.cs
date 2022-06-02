@@ -26,7 +26,7 @@ public class MenuController : MonoBehaviour
 
     public void PlaySolo()
     {
-        SceneManager.LoadScene("Salle Int Medusa");
+        SceneManager.LoadScene("ChooseCharacter");
     }
 
     public void Close()

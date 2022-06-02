@@ -72,11 +72,13 @@ public class SettingsControl : MonoBehaviourPunCallbacks
     {
         
         StartCoroutine(DisconnectAndLoad());
+        this.Close();
     }
 
     IEnumerator DisconnectAndLoad()
     {
-        PhotonNetwork.Disconnect();
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LeaveLobby();
         Debug.Log("[Multiplayer] - Waiting to disconnect");
         /*
         while (PhotonNetwork.IsConnected)

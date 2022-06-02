@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = initial_moveSpeed;
         view = GetComponent<PhotonView>();
         set = Instantiate(settings);
+        DontDestroyOnLoad(set);
         set.SetActive(false);
         set.GetComponent<SettingsControl>().player = this.gameObject;
     }
@@ -71,8 +72,17 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            set.SetActive(true);
-            Time.timeScale = 0;
+            if(Time.timeScale == 0)
+            {
+                set.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                set.SetActive(true);
+                Time.timeScale = 0;
+            }
+            
         }
 
 

@@ -136,6 +136,7 @@ public class EnnemiMouvement : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ennemi");
 
         Vector3 push = new Vector3(0, 0, 0);
+        float size = Mathf.Max(this.hitbox.size.x, this.hitbox.size.y);
 
         foreach (GameObject enemy in enemies)
         {
@@ -144,7 +145,7 @@ public class EnnemiMouvement : MonoBehaviour
                 Vector3 proximity = transform.position - enemy.transform.position;
                 float distance = proximity.magnitude;
                 proximity *= 1 / (5 * distance * distance);
-                push += proximity;
+                push += proximity* Mathf.Max(this.hitbox.size.x, this.hitbox.size.y);
             }
         }
 
