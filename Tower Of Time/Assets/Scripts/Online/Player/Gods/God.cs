@@ -41,6 +41,17 @@ public abstract class God : MonoBehaviour
         isInvicible = false;
     }
 
+    public static God instance;
+
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Debug.LogWarning("Il y a plus d'une instance de God dans la scène");
+            return;
+        }
+    }
+
     public void TakeHit(float damage)
     {
         if (!isInvicible)
@@ -57,6 +68,20 @@ public abstract class God : MonoBehaviour
 
             StartCoroutine(TookDamage());
         }
+    }
+
+    public void HealPlayer(int amount)
+    {
+        hitPoints += amount;
+        if (hitPoints > maxHitPoints)
+            hitPoints = maxHitPoints;
+        BarManager.SetHealth(hitPoints);
+    }
+
+    public void UpdateMaxHealth(int amount)
+    {
+        maxHitPoints += amount;
+        BarManager.SetMaxHealth(maxHitPoints);
     }
 
     private IEnumerator TookDamage()
