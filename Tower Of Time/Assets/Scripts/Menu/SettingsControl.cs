@@ -72,6 +72,7 @@ public class SettingsControl : MonoBehaviourPunCallbacks
     {
         
         StartCoroutine(DisconnectAndLoad());
+        player.GetComponent<PlayerController>().saveDatas();
         this.Close();
     }
 

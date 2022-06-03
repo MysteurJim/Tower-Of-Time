@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 643386509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0798, y: 1.1843, z: 0}
-  m_LocalScale: {x: 1.1064138, y: 1.1526456, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 2020912007}
   m_RootOrder: 1
@@ -3017,8 +3017,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242499442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3077, y: 0.77, z: 0}
-  m_LocalScale: {x: 1.1149676, y: 1.2518156, z: 1}
+  m_LocalPosition: {x: 1.72, y: 0.56, z: 0}
+  m_LocalScale: {x: 2.1812, y: 2.1812, z: 1.0906}
   m_Children: []
   m_Father: {fileID: 2020912007}
   m_RootOrder: 0
@@ -5144,7 +5144,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.412157
+  orthographic size: 17.68367
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5168,7 +5168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753752974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -0.96, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5239,6 +5239,18 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 929760599708648917, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 929760599708648917, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 929760599708648917, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 929760599708648917, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.6382
       objectReference: {fileID: 0}
@@ -5276,6 +5288,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929760599708648917, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200358536443770166, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200358536443770166, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6191135000252290049, guid: f614cf450bf0b174ca3bf58ec0bb1d8f, type: 3}

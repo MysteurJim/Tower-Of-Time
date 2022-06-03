@@ -15,13 +15,18 @@ public class PlayerController : MonoBehaviour
     public Transform SwordPlacement;
     public LayerMask enemyLayers;
     public BarManager barManager;
+    public FonduBlack fb;
+    public bool multi;
+    public Inventory inventory;
 
-    // Start is called before the first frame update
+    public string CurrentRooms;
+
+
     void Start()
     {
         view = GetComponent<PhotonView>();
-       
 
+        
         TilemapRenderer[] background = FindObjectsOfType<TilemapRenderer>(false);
 
         foreach (TilemapRenderer tmR in background)
@@ -29,6 +34,7 @@ public class PlayerController : MonoBehaviour
             tmR.sortingOrder = -100 + (tmR.CompareTag("Wall") ? 1 : 0);
         }
         DontDestroyOnLoad(transform.gameObject);
+        CurrentRooms = "Etage Medusa";
     }
 
     // Update is called once per frame
@@ -44,7 +50,46 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
             god.UseE();
+
+       
     }
+    //FIN DE GAME
+    public void Dead()
+    {
+        fb.StartFade();
+        saveDatas();
+        StartCoroutine(WaiForReturnToMenu());
+    }
+
+    IEnumerator<WaitForSeconds> WaiForReturnToMenu()
+    {
+        yield return new WaitForSeconds(6);
+        gameObject.GetComponent<PlayerMovement>().set.SetActive(true);
+        gameObject.GetComponent<PlayerMovement>().set.GetComponent<SettingsControl>().DisconnectPlayer();
+        
+    }
+
+    //DATAS MANAGERS
+    public void saveDatas()
+    {
+        Debug.Log("Datas save...");
+        Datas datas = new Datas();
+        datas.playerName = PhotonNetwork.NickName;
+        datas.nbr_piece = inventory.coinsCount;
+        datas.current_etage = CurrentRooms;
+        datas.hit_points = (int)god.MaxHitPoints;
+        DataManagers.Save(datas, datas.playerName + ".ToT");
+
+    }
+
+    public void loadDatas()
+    {
+        Datas datas = (Datas)DataManagers.Load(PhotonNetwork.NickName + ".ToT");
+        inventory.coinsCount = datas.nbr_piece;
+        god.maxHitPoints = datas.hit_points;
+        CurrentRooms = datas.current_etage;
+    }
+
 
     void OnDrawGizmos()
     {

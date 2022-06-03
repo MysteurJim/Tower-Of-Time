@@ -54,8 +54,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
         }
         PhotonNetwork.CreateRoom("Online");
-        StartCoroutine(WaitForJoin());
-        
+        PhotonNetwork.LoadLevel("Lobby");
+
 
     }
 
@@ -63,6 +63,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         
         yield return new WaitForSeconds(0.5f);
-        PhotonNetwork.LoadLevel("ChooseCharacter");
+        
     }
 }

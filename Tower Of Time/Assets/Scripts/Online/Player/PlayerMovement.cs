@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction_up;
     private float moveSpeed;
     private int InitialLife;
-    private GameObject set;
+    public GameObject set;
 
 
     private void Start()

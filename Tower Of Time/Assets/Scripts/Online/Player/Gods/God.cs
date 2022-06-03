@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class God : MonoBehaviour
 {
     protected PlayerController playerController;
-    protected float maxHitPoints;
+    public float maxHitPoints;
     protected float hitPoints;
     protected float armor;
     protected bool isInvicible;
@@ -33,6 +33,8 @@ public abstract class God : MonoBehaviour
     public string Capacite => capacite;
     public string Descript => descrip;
 
+    public bool dead = false;
+
     public PhotonView View => playerController.View;
 
     public virtual void Setup(PlayerController playerController)
@@ -58,10 +60,10 @@ public abstract class God : MonoBehaviour
         {
             this.hitPoints -= damage * (1 - armor / (armor + 50));
 
-            if (hitPoints <= 0)
+            if (hitPoints <= 0 & !dead)
             {
-                gameObject.GetComponent<PlayerMovement>().Respawn();
-                hitPoints = maxHitPoints;
+                dead = true;
+                playerController.Dead();
             }
 
             PlayerController.barManager.SetHealth(this.hitPoints);
