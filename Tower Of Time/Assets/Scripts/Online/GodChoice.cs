@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using System.Linq;
 
 public class GodChoice : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class GodChoice : MonoBehaviour
     God god;
     public Button button;
 
-    public InputField nickname;
+    public Dropdown save;
     public Text piece;
     public Text hp;
     public Text salle;
+    
 
+    List<string> saves;
     private PlayerController playerControl;
 
     public void Start()
@@ -24,6 +27,10 @@ public class GodChoice : MonoBehaviour
         player = g[0];
         playerControl = player.GetComponent<PlayerController>();
 
+        saves = DataManagers.ReadSave();
+        saves.Add("NewPlayer");
+        save.AddOptions(saves);
+        LoadDatas();
     }
 
 
@@ -36,7 +43,7 @@ public class GodChoice : MonoBehaviour
         data.nbr_piece = 0;
         data.hit_points = 100;
         data.current_etage = "Etage Medusa";
-        DataManagers.Save(data, nickname.text + ".ToT");
+        DataManagers.Save(data, save.GetComponentInChildren<Text>().text + ".ToT");
         salle.text = data.current_etage;
         piece.text = data.nbr_piece.ToString();
         hp.text = data.hit_points.ToString();
@@ -47,7 +54,7 @@ public class GodChoice : MonoBehaviour
         Debug.Log(Application.persistentDataPath);
         try
         {
-            Datas data = (Datas)DataManagers.Load(nickname.text + ".ToT");
+            Datas data = (Datas)DataManagers.Load(save.GetComponentInChildren<Text>().text + ".ToT");
             salle.text = data.current_etage;
             piece.text = data.nbr_piece.ToString();
             hp.text = data.hit_points.ToString();
@@ -83,8 +90,9 @@ public class GodChoice : MonoBehaviour
 
     public void NextRoom()
     {
-        PhotonNetwork.NickName = nickname.text;
+        PhotonNetwork.NickName = save.GetComponentInChildren<Text>().text;
         playerControl.loadDatas();
+        playerControl.WithGod = true;
         if(playerControl.CurrentRooms == "Etage Medusa")
         {
             PhotonNetwork.LoadLevel("Salle Int Medusa");

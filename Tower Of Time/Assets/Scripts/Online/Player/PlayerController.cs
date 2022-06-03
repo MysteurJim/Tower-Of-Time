@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Inventory inventory;
 
     public string CurrentRooms;
+    public bool WithGod = false;
 
 
     void Start()
@@ -40,17 +41,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
-            god.UseMainAtk();
-        
+        if (WithGod)
+        {
+            if (Input.GetButton("Fire1"))
+                god.UseMainAtk();
 
-        if (Input.GetKeyDown("q"))
-            god.UseQ();
-        
 
-        if (Input.GetKeyDown("e"))
-            god.UseE();
+            if (Input.GetKeyDown("q"))
+                god.UseQ();
 
+
+            if (Input.GetKeyDown("e"))
+                god.UseE();
+        }
        
     }
     //FIN DE GAME
@@ -86,7 +89,8 @@ public class PlayerController : MonoBehaviour
     {
         Datas datas = (Datas)DataManagers.Load(PhotonNetwork.NickName + ".ToT");
         inventory.coinsCount = datas.nbr_piece;
-        god.maxHitPoints = datas.hit_points;
+        god.UpdateMaxHealth(datas.hit_points);
+        god.HealPlayer(datas.hit_points);
         CurrentRooms = datas.current_etage;
     }
 

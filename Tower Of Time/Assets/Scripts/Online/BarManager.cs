@@ -9,8 +9,10 @@ public class BarManager : MonoBehaviour
 
     public void SetMaxHealth(float health)
     {
+        float max_value = slider.maxValue;
         slider.maxValue = health;
-        slider.value = health;
+        slider.value += slider.maxValue - max_value;
+        
     }
 
     public void SetHealth(float health)

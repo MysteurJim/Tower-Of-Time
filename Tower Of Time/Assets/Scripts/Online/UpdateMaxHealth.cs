@@ -10,7 +10,9 @@ public class UpdateMaxHealth : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            
             collision.gameObject.GetComponent<PlayerController>().god.UpdateMaxHealth(UpdateMaxHealthPoints);
+            collision.gameObject.GetComponent<PlayerController>().god.HealPlayer(UpdateMaxHealthPoints);
             Destroy(gameObject);
         }
     }

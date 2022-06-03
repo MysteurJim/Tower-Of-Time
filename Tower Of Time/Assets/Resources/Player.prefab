@@ -355,6 +355,7 @@ MonoBehaviour:
   right: {fileID: -407629773174416253, guid: 7b3ff711e1e576d46a9db9f6ad3c458f, type: 3}
   fire: {fileID: 0}
   settings: {fileID: 1742557271920105685, guid: 07f8f1587127e4c4290bc4d2e2d83108, type: 3}
+  set: {fileID: 0}
 --- !u!114 &429648696300201256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +452,8 @@ MonoBehaviour:
   fb: {fileID: 4034690650939880725}
   multi: 0
   inventory: {fileID: 2609587540172319726}
+  CurrentRooms: 
+  WithGod: 0
 --- !u!1001 &1284937138994896906
 PrefabInstance:
   m_ObjectHideFlags: 0

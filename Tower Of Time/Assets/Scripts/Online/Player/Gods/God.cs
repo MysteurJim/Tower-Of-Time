@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class God : MonoBehaviour
 {
     protected PlayerController playerController;
-    public float maxHitPoints;
+    protected float maxHitPoints;
     protected float hitPoints;
     protected float armor;
     protected bool isInvicible;
