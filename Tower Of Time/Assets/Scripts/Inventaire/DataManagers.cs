@@ -29,7 +29,7 @@ public class DataManagers
         string res;
         bool flag = false;
         List<string> l = new List<string>();
-        string[] files = Directory.GetFiles(@"C:\Users\lepan\AppData\LocalLow\DefaultCompany\Test Unity", "*.Tot");
+        string[] files = Directory.GetFiles(Application.persistentDataPath, "*.Tot");
         foreach(string file in files)
         {
             res = "";
