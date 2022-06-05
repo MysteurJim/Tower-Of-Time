@@ -90,10 +90,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Respawn()
     {
-        Vector2 co_spawn = new Vector2(spawn.transform.position.x, spawn.transform.position.y);
-        Vector2 co = transform.position;
-        transform.Translate(co_spawn - co);
-        Life -= 1;
+        if (GetComponent<PlayerController>().inventory.SecondChanceCount > 0)
+        {
+            GetComponent<PlayerController>().god.HealPlayer(200000);
+        }
+
+        else
+        {
+            Vector2 co_spawn = new Vector2(spawn.transform.position.x, spawn.transform.position.y);
+            Vector2 co = transform.position;
+            transform.Translate(co_spawn - co);
+            Life -= 1;
+        }
     }
 
    

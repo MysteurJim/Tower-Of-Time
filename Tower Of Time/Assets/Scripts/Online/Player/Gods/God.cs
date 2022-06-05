@@ -62,8 +62,18 @@ public abstract class God : MonoBehaviour
 
             if (hitPoints <= 0 & !dead)
             {
-                dead = true;
-                playerController.Dead();
+                if (GetComponent<PlayerController>().inventory.SecondChanceCount > 0)
+                {
+                    GetComponent<PlayerController>().god.HealPlayer(200000);
+                    Inventory.instance.AddSecondChance(-1);
+                }
+
+                else
+                {
+                    dead = true;
+                    playerController.Dead();
+                }
+                
             }
 
             PlayerController.barManager.SetHealth(this.hitPoints);

@@ -27,4 +27,26 @@ public class Inventory : MonoBehaviour
         coinsCount += count;
         coinsCountText.text = coinsCount.ToString();
     }
+
+    public int healthCount;
+
+    public Text healthCountText;
+
+
+    public void AddHealth(int count)
+    {
+        healthCount += count;
+        healthCountText.text = healthCount.ToString();
+    }
+
+    public int SecondChanceCount;
+
+    public Text SecondChanceCountText;
+
+
+    public void AddSecondChance(int count)
+    {
+        SecondChanceCount += count;
+        SecondChanceCountText.text = SecondChanceCount.ToString();
+    }
 }
