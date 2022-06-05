@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using static System.Activator;
+using static System.Math;
 using UnityEngine;
 
 using static RoomTemplates;
@@ -95,7 +96,7 @@ public class UpDown : Room
 
         while ((next?.isFull ?? true) && attempts < MaxAttempts)
         {
-            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + attempts / MaxAttempts;
+            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + Max(0, 2 * attempts / MaxAttempts - 1);
             attempts++;
 
             if (fromUp)
@@ -130,7 +131,7 @@ public class UpLeft : Room
 
         while ((next?.isFull ?? true) && attempts < MaxAttempts)
         {
-            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + attempts / MaxAttempts;
+            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + Max(0, 2 * attempts / MaxAttempts - 1);
             attempts++;
 
             if (fromUp)
@@ -165,7 +166,7 @@ public class UpRight : Room
 
         while ((next?.isFull ?? true) && attempts < MaxAttempts)
         {
-            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + attempts / MaxAttempts;
+            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + Max(0, 2 * attempts / MaxAttempts - 1);
             attempts++;
 
             if (fromUp)
@@ -200,7 +201,7 @@ public class DownLeft : Room
 
         while ((next?.isFull ?? true) && attempts < MaxAttempts)
         {
-            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + attempts / MaxAttempts;
+            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + Max(0, 2 * attempts / MaxAttempts - 1);
             attempts++;
 
             if (fromDown)
@@ -235,7 +236,7 @@ public class DownRight : Room
 
         while ((next?.isFull ?? true) && attempts < MaxAttempts)
         {
-            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + attempts / MaxAttempts;
+            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + Max(0, 2 * attempts / MaxAttempts - 1);
             attempts++;
 
             if (fromDown)
@@ -270,7 +271,7 @@ public class LeftRight : Room
 
         while ((next?.isFull ?? true) && attempts < MaxAttempts)
         {
-            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + attempts / MaxAttempts;
+            bool nextIsDeadEnd = Random.Range(0f,1f) < ((depth - minDepth) / (float)(maxDepth - minDepth)) + Max(0, 2 * attempts / MaxAttempts - 1);
             attempts++;
 
             if (fromLeft)
@@ -297,22 +298,22 @@ public class StartRoom : Room
         : base (map, x, y, level, type)
     {}
 
-    public override void Generate(int depth)
+    public override void Generate(int depth = 0)
     {
         // Up
         Room startUp = (Room)CreateInstance(DownRooms[Random.Range(0, DownRooms.Length)], new object[]{map, map.Start.Item1, map.Start.Item2 - 1, level, RoomType.Intermediate});
-        startUp.Generate();
+        startUp.Generate(depth + 1);
 
         // Down
         Room startDown = (Room)CreateInstance(UpRooms[Random.Range(0, UpRooms.Length)], new object[]{map, map.Start.Item1, map.Start.Item2 + 1, level, RoomType.Intermediate});
-        startDown.Generate();
+        startDown.Generate(depth + 1);
 
         // Left
         Room startLeft = (Room)CreateInstance(RightRooms[Random.Range(0, RightRooms.Length)], new object[]{map, map.Start.Item1 - 1, map.Start.Item2, level, RoomType.Intermediate});
-        startLeft.Generate();
+        startLeft.Generate(depth + 1);
 
         // Roght
         Room startRight = (Room)CreateInstance(LeftRooms[Random.Range(0, LeftRooms.Length)], new object[]{map, map.Start.Item1 + 1, map.Start.Item2, level, RoomType.Intermediate});
-        startRight.Generate();
+        startRight.Generate(depth + 1);
     }
 }

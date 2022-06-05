@@ -1,0 +1,148 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using CurrentStatus;
+using Photon.Pun;
+
+using static System.Math;
+
+public class Room
+{
+    protected Map map;
+    protected (int, int) pos;
+    protected RoomType type;
+    protected int level;
+    protected List<GameObject> entities;
+
+    public Map Map => map;
+    public (int, int) Pos => pos;
+    public RoomType Type => type;
+    public int Level => level;
+    public List<GameObject> Entities => entities;
+    public int x
+    {
+        get => pos.Item1;
+        protected set => pos = (value, pos.Item2);
+    }
+    public int y
+    {
+        get => pos.Item2;
+        protected set => pos = (pos.Item1, value);
+    }
+    public string sceneName => "Salle " + 
+                                type switch { RoomType.BossRoom => "Boss ", _ => "Int "} + 
+                                level switch { 1 => "Medusa", 2 => "Minotaure", 3 => "Charybde et Scylla", _ => "Cronos"};
+
+    public Room(Map map, int x, int y, int level, RoomType type = RoomType.Intermediate)
+    {
+        this.map = map;
+        this.map[x, y] = this;
+        pos = (x, y);
+        this.level = level;
+        this.type = type;
+        entities = new List<GameObject>();
+        Debug.Log(level);
+    }
+
+    public void SetType(RoomType type) => this.type = type;
+
+    protected int minDepth => level * level * level - 7 * level * level + 16 * level - 6;
+    protected int maxDepth => - level * level + 7 * level + 2;
+    public virtual void Generate(int depth = 0){}
+
+    public bool isFull => false;
+
+    public override string ToString()
+    {
+        return type switch {RoomType.StartRoom => "S", RoomType.Intermediate => "I", RoomType.BossRoom => "B", _ => "?"};
+    }
+
+    public void Goto(MonoBehaviour mono)
+    {
+        Current.LivingEnemies = new List<GameObject>();
+        SceneManager.LoadScene(sceneName);
+        Spawn();
+        mono.StartCoroutine(WaitForClear());
+    }
+
+    IEnumerator WaitForClear()
+    {
+        while (!Current.Cleared)
+        {
+            string Living = "";
+            foreach (GameObject enemy in Current.LivingEnemies)
+            {
+                Living += (enemy?.name).ToString() + " ";
+            }
+            Debug.Log(Living);
+
+            yield return null;
+        }
+
+        Debug.Log("Cleared");
+
+        entities.Where<GameObject>(gameObject => gameObject.tag == "Ennemi").ToList<GameObject>().ForEach(gameObject => entities.Remove(gameObject));
+    }
+
+    private int PseudoNormalDistrib(int min, int avg) // genere un nombre aleatoire entre min et 2 * avg - min
+    {
+        float sum = min;
+
+        for (int i = 0; i < 2 * (avg - min); i++) sum += Random.value;
+
+        return (int)sum;
+    }
+
+    public void Populate()
+    {
+        if (map[x, y - 1] != null)
+        {
+            entities.Add(Resources.Load("Portes/Porte Haut") as GameObject);
+            entities.Last().transform.position = new Vector2(0, Current.HalfHeight);
+        }
+
+        if (map[x, y + 1] != null)
+        {
+            entities.Add(Resources.Load("Portes/Porte Bas") as GameObject);
+            entities.Last().transform.position = new Vector2(0, -Current.HalfHeight);
+        }
+
+        if (map[x - 1, y] != null)
+        {
+            entities.Add(Resources.Load("Portes/Porte Gauche") as GameObject);
+            entities.Last().transform.position = new Vector2(-Current.HalfWidth, 0);
+        }
+
+        if (map[x + 1, y] != null)
+        {
+            entities.Add(Resources.Load("Portes/Porte Droite") as GameObject);
+            entities.Last().transform.position = new Vector2(Current.HalfWidth, 0);
+        }
+
+        if (type == RoomType.BossRoom)
+            System.Array.ForEach<GameObject>(Current.Boss(), x => entities.Add(x));
+
+        if (type == RoomType.Intermediate)
+        {
+            int toAdd = PseudoNormalDistrib(3, 5);
+            GameObject[] minions = Current.Minions();
+            for (int i = 0; i < toAdd; i++)
+            {
+                entities.Add(minions[Random.Range(0, minions.Length)]);
+                entities[minions.Length - 1].transform.position = new Vector2(Random.Range(0, Current.HalfWidth) - Current.HalfWidth / 2, Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2);
+            }
+        }
+    }
+
+    public void Spawn()
+    {
+        entities.ForEach(gameObject => 
+        {
+            Debug.Log(gameObject.name);
+            GameObject curr = GameObject.Instantiate(gameObject);
+            if (curr.tag == "Ennemi") Current.LivingEnemies.Add(curr);
+        });
+    }
+}

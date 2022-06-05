@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using static System.Math;
 using UnityEngine;
+using CurrentStatus;
 
 public class Map
 {
@@ -30,11 +31,17 @@ public class Map
         this.level = level;
         floor = new Room[Size, Size];
         deadEnds = new List<Room>();
+        
+        Current.Map = this;
+        Current.x = start.Item1;
+        Current.y = start.Item2;
 
         Room startRoom = new StartRoom(this, start.Item1, start.Item2, level);
 
+        
+
         startRoom.Generate();
-        this[start.Item1, start.Item2].SetType(RoomType.StartRoom);
+        this[start.Item1, start.Item2] = startRoom;
 
         Room furthest = deadEnds[0];
         int maxDist = DistToBoss(furthest);
@@ -50,6 +57,14 @@ public class Map
         }
 
         furthest.SetType(RoomType.BossRoom);
+
+        Populate();
+    }
+
+    public void Populate()
+    {
+        for (int i = 0; i < Size * Size; i++)
+            this[i / Size, i % Size]?.Populate();
     }
 
     public void Print()
@@ -65,6 +80,32 @@ public class Map
             res += "|\n";
         }
 
-        Debug.Log(res);
+        Debug.Log(res + $"\n{Current.x},{Current.y}");
+    }
+    public void Goto(string direction, MonoBehaviour mono)   
+    {
+        switch (direction.ToLower())
+        {
+            case "haut":
+                Current.y -= 1;
+                break;
+
+            case "bas":
+                Current.y += 1;
+                break;
+
+            case "gauche":
+                Current.x -= 1;
+                break;
+
+            case "droite":
+                Current.x += 1;
+                break;
+
+            default :
+                throw new System.Exception("Shouldna done that");
+        }
+
+        this[Current.x, Current.y].Goto(mono);
     }
 }

@@ -27,7 +27,14 @@ public class GodChoice : MonoBehaviour
         player = g[0];
         playerControl = player.GetComponent<PlayerController>();
 
-        saves = DataManagers.ReadSave();
+        try
+        {
+            saves = DataManagers.ReadSave();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
         saves.Add("NewPlayer");
         save.AddOptions(saves);
         LoadDatas();
@@ -38,7 +45,7 @@ public class GodChoice : MonoBehaviour
 
     public void CreateNewDatas()
     {
-        Debug.Log("Création d'un nouveau fichier");
+        Debug.Log("Crï¿½ation d'un nouveau fichier");
         Datas data = new Datas();
         data.nbr_piece = 0;
         data.hit_points = 100;
@@ -92,7 +99,7 @@ public class GodChoice : MonoBehaviour
     {
         PhotonNetwork.NickName = save.GetComponentInChildren<Text>().text;
         playerControl.loadDatas();
-        playerControl.WithGod = true;
+        playerControl.WithGod = true;/*
         if(playerControl.CurrentRooms == "Etage Medusa")
         {
             PhotonNetwork.LoadLevel("Salle Int Medusa");
@@ -101,8 +108,9 @@ public class GodChoice : MonoBehaviour
         {
             PhotonNetwork.LoadLevel("Salle Int Minotaure");
 
-        }
-        
+        }*/
+
+        GameLauncher.LaunchNewGame(this);
     }
 
     public void NextRoomOnline()
