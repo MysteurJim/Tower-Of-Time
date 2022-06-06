@@ -9,7 +9,7 @@ public class GoDown : MonoBehaviour
     {
         GameObject collided = collision.gameObject;
         if (Current.Cleared && collided.tag == "Player")
-            Current.Map.Goto("Bas", this);
+            Current.Map.Goto("Bas");
     }
     
     void Start()

@@ -83,7 +83,7 @@ public class Map
 
         Debug.Log(res + $"\n{Current.x},{Current.y}");
     }
-    public void Goto(string direction, MonoBehaviour mono)   
+    public void Goto(string direction)   
     {
         switch (direction.ToLower())
         {
@@ -103,10 +103,16 @@ public class Map
                 Current.x += 1;
                 break;
 
+            case "start":
+                Current.x = start.Item1;
+                Current.y = start.Item2;
+                break;
+
             default :
                 throw new System.Exception("Shouldna done that");
         }
 
+        MonoBehaviour mono = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         this[Current.x, Current.y].Goto(mono);
     }
 }

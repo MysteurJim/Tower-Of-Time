@@ -8,7 +8,7 @@ public static class GameLauncher
     public static void LaunchNewGame(MonoBehaviour mono)
     {
         new Map(1);
-        Current.Map[Current.x, Current.y].Goto(mono);
+        Current.Map.Goto("Start");
         Current.Map.Print();
     }
 }

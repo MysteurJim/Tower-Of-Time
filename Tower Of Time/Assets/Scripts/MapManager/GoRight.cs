@@ -9,7 +9,7 @@ public class GoRight : MonoBehaviour
     {
         GameObject collided = collision.gameObject;
         if (Current.Cleared && collided.tag == "Player")
-            Current.Map.Goto("Droite", this);
+            Current.Map.Goto("Droite");
     }
 
     void Start()
