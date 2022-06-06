@@ -9,7 +9,7 @@ public class GoUp : MonoBehaviour
     {
         GameObject collided = collision.gameObject;
         if (Current.Cleared && collided.tag == "Player")
-            Current.Map.Goto("Haut", this);
+            Current.Map.Goto("Haut");
     }
 
     void Start()

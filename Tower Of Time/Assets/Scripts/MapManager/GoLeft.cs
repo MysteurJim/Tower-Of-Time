@@ -9,7 +9,7 @@ public class GoLeft : MonoBehaviour
     {
         GameObject collided = collision.gameObject;
         if (Current.Cleared && collided.tag == "Player")
-            Current.Map.Goto("Gauche", this);
+            Current.Map.Goto("Gauche");
     }
 
     void Start()

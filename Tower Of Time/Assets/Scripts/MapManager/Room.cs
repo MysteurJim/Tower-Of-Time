@@ -64,12 +64,15 @@ public class Room
     {
         Current.LivingEnemies = new List<GameObject>();
         SceneManager.LoadScene(sceneName);
-        Spawn();
         mono.StartCoroutine(WaitForClear());
     }
 
     IEnumerator WaitForClear()
     {
+        yield return null;
+
+        Spawn();
+
         while (!Current.Cleared)
         {
             string Living = "";
@@ -131,6 +134,7 @@ public class Room
 
     public void Spawn()
     {
+        Debug.Log("Spawning");
         entities.ForEach(entity => 
         {
             Debug.Log(entity.Item1);
