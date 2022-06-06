@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 1ce60fa2d5886ce4282819d9bb41a128
   - enabled: 1
-    path: Assets/Scenes/Multi/Salle Int Medusa.unity
+    path: Assets/Scenes/Multi/Salle Tuto.unity
     guid: 0f702e441b827d34aafc08a53d463a0c
   - enabled: 1
     path: Assets/Scenes/Multi/Salle Boss Medusa.unity

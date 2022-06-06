@@ -16,6 +16,9 @@ public class GodChoice : MonoBehaviour
     public Text piece;
     public Text hp;
     public Text salle;
+
+    public Text save_name;
+
     
 
     List<string> saves;
@@ -38,6 +41,7 @@ public class GodChoice : MonoBehaviour
         saves.Add("NewPlayer");
         save.AddOptions(saves);
         LoadDatas();
+        Debug.Log(Application.persistentDataPath);
     }
 
 
@@ -50,7 +54,7 @@ public class GodChoice : MonoBehaviour
         data.nbr_piece = 0;
         data.hit_points = 100;
         data.current_etage = "Etage Medusa";
-        DataManagers.Save(data, save.GetComponentInChildren<Text>().text + ".ToT");
+        DataManagers.Save(data, save_name.text + ".ToT");
         salle.text = data.current_etage;
         piece.text = data.nbr_piece.ToString();
         hp.text = data.hit_points.ToString();
@@ -58,13 +62,15 @@ public class GodChoice : MonoBehaviour
 
     public void LoadDatas()
     {
-        Debug.Log(Application.persistentDataPath);
+       
         try
         {
-            Datas data = (Datas)DataManagers.Load(save.GetComponentInChildren<Text>().text + ".ToT");
+            Datas data = (Datas)DataManagers.Load(save_name.text + ".ToT");
             salle.text = data.current_etage;
             piece.text = data.nbr_piece.ToString();
             hp.text = data.hit_points.ToString();
+            
+            Debug.Log($"Joueur {save_name.text}");
         }
         catch
         {
@@ -76,9 +82,9 @@ public class GodChoice : MonoBehaviour
 
     public void Sword()
     {
-        player.AddComponent(typeof(TestGod));
-        playerControl.god = player.GetComponent<TestGod>();
-        god = player.GetComponent<TestGod>();
+        player.AddComponent(typeof(Zeus));
+        playerControl.god = player.GetComponent<Zeus>();
+        god = player.GetComponent<Zeus>();
         god.Setup(playerControl);
         button.interactable = true;
         playerControl.barManager.SetMaxHealth(god.HitPoints);
@@ -97,7 +103,7 @@ public class GodChoice : MonoBehaviour
 
     public void NextRoom()
     {
-        PhotonNetwork.NickName = save.GetComponentInChildren<Text>().text;
+        PhotonNetwork.NickName = save_name.text;
         playerControl.loadDatas();
         playerControl.WithGod = true;/*
         if(playerControl.CurrentRooms == "Etage Medusa")

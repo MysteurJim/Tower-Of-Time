@@ -56,12 +56,20 @@ PrefabInstance:
       value: 0.1590414
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 24.802656
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 35.079998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 12.911383
+      value: 24.802656
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 19.949999
+      value: 35.079998
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051625, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_RootOrder
@@ -124,9 +132,17 @@ PrefabInstance:
       value: Medusa
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_Size.x
+      value: 24.802656
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_Size.y
+      value: 35.079998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7169066014164074324, guid: 617ae25240a258b49b7d21b48c780d6c, type: 3}
+      objectReference: {fileID: 21300000, guid: 617ae25240a258b49b7d21b48c780d6c, type: 3}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

@@ -21,19 +21,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 15.211628
+      value: 24.802656
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 19.64
+      value: 35.079998
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 15.211628
+      value: 24.802656
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051624, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 19.64
+      value: 35.079998
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051625, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_RootOrder
@@ -81,20 +81,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051628, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Name
-      value: Ennemi Variant
+      value: Minotaure
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Size.x
-      value: 15.211628
+      value: 24.802656
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Size.y
-      value: 19.64
+      value: 35.079998
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6653283187318301779, guid: 810bfec33345259438c74900f06cc84e, type: 3}
+      objectReference: {fileID: 21300000, guid: 810bfec33345259438c74900f06cc84e, type: 3}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

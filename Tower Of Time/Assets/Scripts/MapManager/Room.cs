@@ -7,6 +7,7 @@ using CurrentStatus;
 using Photon.Pun;
 
 using static System.Math;
+using System;
 
 public class Room
 {
@@ -92,7 +93,7 @@ public class Room
     {
         float sum = min;
 
-        for (int i = 0; i < 2 * (avg - min); i++) sum += Random.value;
+        for (int i = 0; i < 2 * (avg - min); i++) sum += UnityEngine.Random.value;
 
         return (int)sum;
     }
@@ -121,9 +122,9 @@ public class Room
             string[] minions = Current.Minions();
 
             for (int i = 0; i < toAdd; i++)
-                entities.Add((minions[Random.Range(0, minions.Length)],
-                              Random.Range(0, Current.HalfWidth) - Current.HalfWidth / 2,
-                              Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2,
+                entities.Add((minions[UnityEngine.Random.Range(0, minions.Length)],
+                              UnityEngine.Random.Range(0, Current.HalfWidth) - Current.HalfWidth / 2,
+                              UnityEngine.Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2,
                               Quaternion.identity));
         }
     }
@@ -136,5 +137,6 @@ public class Room
             GameObject curr = PhotonNetwork.InstantiateRoomObject(entity.Item1, new Vector2(entity.Item2, entity.Item3), entity.Item4);
             if (curr.tag == "Ennemi") Current.LivingEnemies.Add(curr);
         });
+        
     }
 }

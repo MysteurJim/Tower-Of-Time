@@ -16,12 +16,12 @@ public class PlayerMovement : MonoBehaviour
     public Sprite right;
     public Fire fire;
     public GameObject settings;
-
+    public float moveSpeed;
     PhotonView view;
 
     private Vector2 direction_right;
     private Vector2 direction_up;
-    private float moveSpeed;
+    
     private int InitialLife;
     public GameObject set;
 

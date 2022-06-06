@@ -9,20 +9,23 @@ public abstract class Ability : MonoBehaviour
     protected PlayerController playerController;
     protected WaitForSeconds cooldown;
     protected bool isOnCooldown;
+    protected int level;
 
     public God God;
     public string Description => description;
     public PlayerController PlayerController => playerController;
     public WaitForSeconds Cooldown => cooldown;
     public bool IsOnCooldown => isOnCooldown;
-
+    public int Level => level;
     public PhotonView View => god.View;
+    
 
     public virtual void Setup(God god, PlayerController playerController, float cooldown)
     {
         this.god = god;
         this.playerController = playerController;
         this.cooldown = new WaitForSeconds(cooldown);
+        this.level = 1;
         isOnCooldown = false;
     }
 
