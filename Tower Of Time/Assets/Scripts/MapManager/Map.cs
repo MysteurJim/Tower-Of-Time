@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using static System.Math;
 using UnityEngine;
 using CurrentStatus;
+using System.Linq;
 
 public class Map
 {
@@ -46,7 +47,7 @@ public class Map
         Room furthest = deadEnds[0];
         int maxDist = DistToBoss(furthest);
 
-        foreach (Room deadEnd in deadEnds)
+        foreach (Room deadEnd in deadEnds.Where<Room>(room => this[room.Pos.Item1, room.Pos.Item2] == room))
         {
             int currDist = DistToBoss(deadEnd);
             if (currDist > maxDist)

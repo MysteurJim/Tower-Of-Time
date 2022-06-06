@@ -18,43 +18,51 @@ namespace CurrentStatus
         public static List<GameObject> LivingEnemies { get; set; } 
         public static bool Cleared => LivingEnemies.All<GameObject>(gameObject => gameObject == null);
 
-        public static GameObject[] Boss()
+        public static string[] Boss()
         {
             switch (level)
             {
                 case 1:
-                    return new []{Resources.Load("Medusa") as GameObject};
+                    return new []{"Méchant/Level 1/Medusa"};
 
                 case 2:
-                    return new []{Resources.Load("Minotaure") as GameObject};
+                    return new []{"Méchant/Level 2/Minotaure"};
 
                 case 3:
-                    return new []{Resources.Load("Charybde") as GameObject,
-                                  Resources.Load("Scylla") as GameObject};
+                    return new []{"Méchant/Level 3/Charybde",
+                                  "Méchant/Level 3/Scylla"};
 
                 case 4:
-                    return new []{Resources.Load("Cronos") as GameObject};
+                    return new []{"Méchant/Level 4/Cronos"};
 
                 default : 
                     throw new System.Exception("Invalid level index");
             }
         }
 
-        public static GameObject[] Minions() // /!\ A COMPLETER QUAND DES MONSTRES SONT AJOUTES
+        public static string[] Minions() // /!\ A COMPLETER QUAND DES MONSTRES SONT AJOUTES
         {
             switch (level)
             {
                 case 1:
-                    return new []{Resources.Load("Serpent1") as GameObject};
+                    return new []{"Méchant/Level 1/Anaconda",
+                                  "Méchant/Level 1/Boa",
+                                  "Méchant/Level 1/Cobra"};
 
                 case 2:
-                    return new []{Resources.Load("Minotaure-petit") as GameObject};
+                    return new []{"Méchant/Level 2/Puberté",
+                                  "Méchant/Level 2/Superman",
+                                  "Méchant/Level 2/Taureau"};
 
                 case 3:
-                    return new GameObject[]{};
+                    return new []{"Méchant/Level 3/Hippo",
+                                  "Méchant/Level 3/Kraken",
+                                  "Méchant/Level 3/Sirène"};
 
                 case 4:
-                    return new GameObject[]{};
+                    return new []{"Méchant/Level 4/Titan 1",
+                                  "Méchant/Level 4/Titan 2",
+                                  "Méchant/Level 4/Titan 3"};
 
                 default : 
                     throw new System.Exception("Invalid level index");

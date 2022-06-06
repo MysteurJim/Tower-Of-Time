@@ -14,13 +14,13 @@ public class Room
     protected (int, int) pos;
     protected RoomType type;
     protected int level;
-    protected List<GameObject> entities;
+    protected List<(string, float, float, Quaternion)> entities; // Saves entities as (name, pos.x, pos.y, rotation) as required by PhotonNetwork.Instantiate :unamused:
 
     public Map Map => map;
     public (int, int) Pos => pos;
     public RoomType Type => type;
     public int Level => level;
-    public List<GameObject> Entities => entities;
+    public List<(string, float, float, Quaternion)> Entities => entities;
     public int x
     {
         get => pos.Item1;
@@ -42,7 +42,7 @@ public class Room
         pos = (x, y);
         this.level = level;
         this.type = type;
-        entities = new List<GameObject>();
+        entities = new List<(string, float, float, Quaternion)>();
         Debug.Log(level);
     }
 
@@ -83,7 +83,9 @@ public class Room
 
         Debug.Log("Cleared");
 
-        entities.Where<GameObject>(gameObject => gameObject.tag == "Ennemi").ToList<GameObject>().ForEach(gameObject => entities.Remove(gameObject));
+        entities.Where<(string, float, float, Quaternion)>(entity => entity.Item1.Substring(0, Min(entity.Item1.Length, "Méchant".Length)) == "Méchant")
+                .ToList<(string, float, float, Quaternion)>()
+                .ForEach(enemy => entities.Remove(enemy));
     }
 
     private int PseudoNormalDistrib(int min, int avg) // genere un nombre aleatoire entre min et 2 * avg - min
@@ -98,50 +100,40 @@ public class Room
     public void Populate()
     {
         if (map[x, y - 1] != null)
-        {
-            entities.Add(Resources.Load("Portes/Porte Haut") as GameObject);
-            entities.Last().transform.position = new Vector2(0, Current.HalfHeight);
-        }
+            entities.Add(("Portes/Porte Haut", 0, Current.HalfHeight, Quaternion.identity));
 
         if (map[x, y + 1] != null)
-        {
-            entities.Add(Resources.Load("Portes/Porte Bas") as GameObject);
-            entities.Last().transform.position = new Vector2(0, -Current.HalfHeight);
-        }
+            entities.Add(("Portes/Porte Bas", 0, -Current.HalfHeight, Quaternion.AngleAxis(180, Vector3.forward)));
 
         if (map[x - 1, y] != null)
-        {
-            entities.Add(Resources.Load("Portes/Porte Gauche") as GameObject);
-            entities.Last().transform.position = new Vector2(-Current.HalfWidth, 0);
-        }
+            entities.Add(("Portes/Porte Gauche", -Current.HalfWidth, 0, Quaternion.AngleAxis(90, Vector3.forward)));
 
         if (map[x + 1, y] != null)
-        {
-            entities.Add(Resources.Load("Portes/Porte Droite") as GameObject);
-            entities.Last().transform.position = new Vector2(Current.HalfWidth, 0);
-        }
+            entities.Add(("Portes/Porte Droite", Current.HalfWidth, 0, Quaternion.AngleAxis(270, Vector3.forward)));
+
 
         if (type == RoomType.BossRoom)
-            System.Array.ForEach<GameObject>(Current.Boss(), x => entities.Add(x));
+            System.Array.ForEach<string>(Current.Boss(), x => entities.Add((x, 0, 0, Quaternion.identity)));
 
         if (type == RoomType.Intermediate)
         {
             int toAdd = PseudoNormalDistrib(3, 5);
-            GameObject[] minions = Current.Minions();
+            string[] minions = Current.Minions();
+
             for (int i = 0; i < toAdd; i++)
-            {
-                entities.Add(minions[Random.Range(0, minions.Length)]);
-                entities[minions.Length - 1].transform.position = new Vector2(Random.Range(0, Current.HalfWidth) - Current.HalfWidth / 2, Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2);
-            }
+                entities.Add((minions[Random.Range(0, minions.Length)],
+                              Random.Range(0, Current.HalfWidth) - Current.HalfWidth / 2,
+                              Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2,
+                              Quaternion.identity));
         }
     }
 
     public void Spawn()
     {
-        entities.ForEach(gameObject => 
+        entities.ForEach(entity => 
         {
-            Debug.Log(gameObject.name);
-            GameObject curr = GameObject.Instantiate(gameObject);
+            Debug.Log(entity.Item1);
+            GameObject curr = PhotonNetwork.InstantiateRoomObject(entity.Item1, new Vector2(entity.Item2, entity.Item3), entity.Item4);
             if (curr.tag == "Ennemi") Current.LivingEnemies.Add(curr);
         });
     }

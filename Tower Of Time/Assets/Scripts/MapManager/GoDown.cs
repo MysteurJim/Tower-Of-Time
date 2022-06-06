@@ -15,6 +15,11 @@ public class GoDown : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0, -Current.HalfHeight, 3);
-        Debug.Log($"Loaded down door at {transform.position.ToString()}");
+        Debug.Log($"Loaded down door at {transform.position.ToString()}, is{(GetComponent<Renderer>().isVisible ? "" : "n't")} visible");
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, 100);
     }
 }

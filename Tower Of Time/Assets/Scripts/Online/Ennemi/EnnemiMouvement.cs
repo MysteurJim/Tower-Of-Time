@@ -144,7 +144,7 @@ public class EnnemiMouvement : MonoBehaviour
             {
                 Vector3 proximity = transform.position - enemy.transform.position;
                 float distance = proximity.magnitude;
-                proximity *= 1 / (5 * distance * distance);
+                proximity *= 1 / (5 * distance * distance + 1);
                 push += proximity* Mathf.Max(this.hitbox.size.x, this.hitbox.size.y);
             }
         }
