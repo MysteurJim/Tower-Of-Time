@@ -17,11 +17,15 @@ public class Spawn : MonoBehaviour
 
     private void Start()
     {
-        Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        StartCoroutine(WaitForSpawn());
         //DontDestroyOnLoad(p);
     }
 
-
+    IEnumerator WaitForSpawn()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+    }
 
 }

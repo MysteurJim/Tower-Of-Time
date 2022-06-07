@@ -10,7 +10,7 @@ public class BoostVitesse:Ability
     public void Setup(God god,PlayerController playerController)
     {
         base.Setup(god, playerController, 3);
-        boostVitesse = 0.75f;
+        boostVitesse = 0.50f;
         this.playerController = playerController;
         pm = playerController.gameObject.GetComponent<PlayerMovement>();
     }
@@ -23,6 +23,23 @@ public class BoostVitesse:Ability
         pm.moveSpeed = pm.moveSpeed * (1 + boostVitesse);
         playerController.GetComponent<PlayerStatusRef>().plume.SetActive(true);
         StartCoroutine(SpeedBoost());
+    }
+
+    public override void Upgrade(bool pay = true)
+    {
+        boostVitesse += 0.10f;
+        if (pay)
+        {
+            this.inventory.coinsCount -= 3;
+        }
+        level += 1;
+    }
+
+    public override void Downgrade()
+    {
+        boostVitesse -= 0.10f;
+        this.inventory.coinsCount += 2;
+        level -= 1;
     }
 
     IEnumerator SpeedBoost()

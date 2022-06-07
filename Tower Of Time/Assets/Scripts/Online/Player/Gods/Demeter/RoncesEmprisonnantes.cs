@@ -22,6 +22,11 @@ public class RoncesEmprisonnantes : ZoneEffect
         }
     }
 
+    public override void Upgrade(bool pay = true)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private IEnumerator ApplyEffect()
     {
         

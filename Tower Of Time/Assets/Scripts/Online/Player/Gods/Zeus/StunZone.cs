@@ -27,6 +27,7 @@ public class StunZone : Ability
         this.duration = 0.8f;
         this.effectRenderer = effect.GetComponent<SpriteRenderer>();
         effectRenderer.color = new Color(effectRenderer.color.r, effectRenderer.color.g, effectRenderer.color.b, 0);
+        
     }
 
     public override void Use()
@@ -46,6 +47,23 @@ public class StunZone : Ability
         StartCoroutine(StartCooldown());
         
 
+    }
+
+    public override void Upgrade(bool pay = true)
+    {
+        this.duration += 0.25f;
+        if (pay)
+        {
+            this.inventory.coinsCount -= 3;
+        }
+        level += 1;
+    }
+
+    public override void Downgrade()
+    {
+        this.duration -= 0.25f;
+        this.inventory.coinsCount += 2;
+        level -= 1;
     }
 
     IEnumerator Animation()

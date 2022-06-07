@@ -25,6 +25,12 @@ public class GodChoice : MonoBehaviour
     public Text save_name;
     public InputField inputfiel;
 
+    public MenuCompetences Hammer;
+    public MenuCompetences Feu;
+    public MenuCompetences Speed;
+    public MenuCompetences Eclair;
+
+    public GameObject MenuZeus;
     
 
     List<string> saves;
@@ -32,13 +38,18 @@ public class GodChoice : MonoBehaviour
 
     public void Start()
     {
-        GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
-        player = g[0];
+        StartCoroutine(WaitForStart());
+       
+    }
+
+    IEnumerator WaitForStart()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GameObject g = GameObject.FindGameObjectWithTag("Player");
+        player = g;
         playerControl = player.GetComponent<PlayerController>();
         RefreshSave();
     }
-
-
     //JE GERE LES DATAS FRERO
 
     public void CreateNewDatas()
@@ -50,12 +61,15 @@ public class GodChoice : MonoBehaviour
         data.dead = 0;
         data.secondChance = 0;
         data.current_etage = "Etage Medusa";
+        data.level_ability = "1/1/1/1/1/";
+        data.GodChoose = false;
         DataManagers.Save(data, save_name.text + ".ToT");
         salle.text = data.current_etage;
         piece.text = data.nbr_piece.ToString();
         hp.text = data.hit_points.ToString();
         dead.text = data.dead.ToString();
         vie.text = data.secondChance.ToString();
+        
     }
 
     public void LoadDatas()
@@ -69,16 +83,38 @@ public class GodChoice : MonoBehaviour
             hp.text = data.hit_points.ToString();
             dead.text = data.dead.ToString();
             vie.text = data.secondChance.ToString();
+            if (data.GodChoose)
+            {
+                StartCoroutine(WaitForSomething(data.god));
+            }
+            
             Debug.Log($"Joueur {save_name.text}");
         }
         catch
         {
             Debug.Log("Joueur Inconnu");
+            UnselectedGod();
             CreateNewDatas();
             Edit();
             
         }
-        
+        Dieu1.interactable = true;
+        Dieu2.interactable = true;
+        MenuZeus.GetComponent<AllMenuCompetences>().RefreshAll();
+    }
+
+    IEnumerator WaitForSomething(string god)
+    {
+        yield return new WaitForSeconds(0.3f);
+        switch (god)
+        {
+            case "Zeus":
+                Zeus();
+                break;
+            default:
+                Projectil();
+                break;
+        }
     }
 
     public void Edit()
@@ -96,7 +132,7 @@ public class GodChoice : MonoBehaviour
         save_name.text = inputfiel.textComponent.text;
         inputfiel.text = "";
         RefreshSave();
-        button.interactable = false;
+        
     }
 
     public void Quit()
@@ -129,7 +165,13 @@ public class GodChoice : MonoBehaviour
         
     }
 
-    public void Sword()
+    public void RefreshInfos()
+    {
+
+        piece.text = playerControl.inventory.coinsCount.ToString();
+    }
+
+    public void Zeus()
     {
         player.AddComponent(typeof(Zeus));
         playerControl.god = player.GetComponent<Zeus>();
@@ -139,6 +181,16 @@ public class GodChoice : MonoBehaviour
         playerControl.barManager.SetMaxHealth(god.HitPoints);
         Dieu1.interactable = false;
         Dieu2.interactable = false;
+        MenuZeus.SetActive(true);
+
+        Hammer.ability = god.GetComponent<StunZone>();
+        Speed.ability = god.GetComponent<BoostVitesse>();
+        Feu.ability = god.GetComponent<Dotfeu>();
+        Eclair.ability = god.GetComponent<Eclair>();
+
+        PhotonNetwork.NickName = save_name.text;
+        playerControl.loadDatas();
+        MenuZeus.GetComponent<AllMenuCompetences>().RefreshAll();
     }
 
     public void Projectil()
@@ -152,12 +204,21 @@ public class GodChoice : MonoBehaviour
        playerControl.barManager.SetMaxHealth(god.HitPoints);
         Dieu1.interactable = false;
         Dieu2.interactable = false;
+        PhotonNetwork.NickName = save_name.text;
+        playerControl.loadDatas();
+    }
+
+    public void UnselectedGod()
+    {
+        Destroy(player.GetComponent<Zeus>());
+        Destroy(player.GetComponent<Demeter>());
+        MenuZeus.SetActive(false);
     }
 
     public void NextRoom()
     {
-        PhotonNetwork.NickName = save_name.text;
-        playerControl.loadDatas();
+        
+        
         playerControl.WithGod = true;/*
         if(playerControl.CurrentRooms == "Etage Medusa")
         {

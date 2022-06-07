@@ -68,10 +68,14 @@ public class SettingsControl : MonoBehaviourPunCallbacks
         
     }
 
-    public void DisconnectPlayer()
+    public void DisconnectPlayer(bool dead = true)
     {
         
         StartCoroutine(DisconnectAndLoad());
+        if (dead)
+        {
+            player.GetComponent<PlayerController>().mort += -1;
+        }
         player.GetComponent<PlayerController>().saveDatas();
         this.Close();
     }

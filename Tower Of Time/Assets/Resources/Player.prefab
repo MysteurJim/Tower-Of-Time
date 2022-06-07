@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 964a5d23c0d68824c8d1649f890cfd85, type: 3}
+  m_Sprite: {fileID: 8968790834775210918, guid: 964a5d23c0d68824c8d1649f890cfd85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -620,6 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d08ed52c53ec34e8fcb8506cc6835f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mort: 0
   god: {fileID: 0}
   SwordPlacement: {fileID: 3105220611858838892}
   enemyLayers:

@@ -9,8 +9,10 @@ public abstract class Ability : MonoBehaviour
     protected PlayerController playerController;
     protected WaitForSeconds cooldown;
     protected bool isOnCooldown;
-    protected int level;
+    public int level;
+    protected Inventory inventory;
 
+    public Inventory Inventory => inventory;
     public God God;
     public string Description => description;
     public PlayerController PlayerController => playerController;
@@ -27,6 +29,7 @@ public abstract class Ability : MonoBehaviour
         this.cooldown = new WaitForSeconds(cooldown);
         this.level = 1;
         isOnCooldown = false;
+        this.inventory = playerController.gameObject.GetComponentInChildren<Inventory>();
     }
 
     public virtual bool TryUse()
@@ -42,6 +45,16 @@ public abstract class Ability : MonoBehaviour
     }
 
     public abstract void Use();
+    public virtual void Upgrade(bool pay = true) {}
+    public virtual void Downgrade() {}
+
+    public virtual void AddLevels(int levelsUp)
+    {
+        for (int i = 0; i < levelsUp-1; i++)
+        {
+            Upgrade(false);
+        }
+    }
 
     public IEnumerator StartCooldown()
     {

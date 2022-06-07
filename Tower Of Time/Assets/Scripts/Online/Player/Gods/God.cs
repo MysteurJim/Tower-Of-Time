@@ -28,7 +28,7 @@ public abstract class God : MonoBehaviour
     public bool IsInvincible => isInvicible;
     public Ability MainAtk => mainAtk;
     public Ability Q => q;
-    public string Name => Name;
+    public string Name => name;
     public Ability E => e;
     public Ability R => r;
     public Ability F => f;
@@ -120,4 +120,7 @@ public abstract class God : MonoBehaviour
     public virtual bool UseR() => r.TryUse();
 
     public virtual bool UseF() => f.TryUse();
+
+    public virtual string EncodeLevels() { return null; }
+    public virtual void DecodeLevels(string decodeString) {}
 }

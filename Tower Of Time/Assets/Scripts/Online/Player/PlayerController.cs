@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    public int mort = 0;
     public God god;
     private PhotonView view;
     
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         gameObject.GetComponent<PlayerMovement>().set.SetActive(true);
-        gameObject.GetComponent<PlayerMovement>().set.GetComponent<SettingsControl>().DisconnectPlayer();
+        gameObject.GetComponent<PlayerMovement>().set.GetComponent<SettingsControl>().DisconnectPlayer(false);
         
     }
 
@@ -96,9 +97,20 @@ public class PlayerController : MonoBehaviour
         datas.current_etage = CurrentRooms;
         datas.hit_points = (int)god.MaxHitPoints;
         datas.secondChance = inventory.SecondChanceCount;
-        datas.dead += 1;
+        datas.dead = mort + 1;
+        datas.level_ability = CompressGod();
+        datas.god = "Zeus";
+        datas.GodChoose = true;
+        Debug.Log(datas.level_ability);
         DataManagers.Save(datas, datas.playerName + ".ToT");
 
+    }
+
+    public string CompressGod()
+    {
+        string res;
+        res = god.EncodeLevels();
+        return res;
     }
 
     public void loadDatas()
@@ -109,6 +121,8 @@ public class PlayerController : MonoBehaviour
         god.UpdateMaxHealth(datas.hit_points-(int)god.MaxHitPoints);
         god.HealPlayer(datas.hit_points);
         CurrentRooms = datas.current_etage;
+        god.DecodeLevels(datas.level_ability);
+        mort = datas.dead;
     }
 
 
