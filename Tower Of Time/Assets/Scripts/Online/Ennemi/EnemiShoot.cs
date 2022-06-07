@@ -44,10 +44,12 @@ public class EnemiShoot : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         if(player != null)
         {
-            GameObject speel = PhotonNetwork.Instantiate(projectile.name, transform.position, Quaternion.identity);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Transform pos = player.GetComponent<Transform>();
             Vector2 direction = (pos.position - transform.position).normalized;
+            GameObject speel = PhotonNetwork.Instantiate(projectile.name, transform.position, Quaternion.AngleAxis(Vector2.Angle(direction, Vector2.right),Vector3.forward));
+            
+            
             speel.GetComponent<Rigidbody2D>().velocity = direction * projectilForce;
             shooting = StartCoroutine(ShootPlayer());
         }

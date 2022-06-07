@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
         datas.nbr_piece = inventory.coinsCount;
         datas.current_etage = CurrentRooms;
         datas.hit_points = (int)god.MaxHitPoints;
+        datas.secondChance = inventory.SecondChanceCount;
+        datas.dead += 1;
         DataManagers.Save(datas, datas.playerName + ".ToT");
 
     }
@@ -96,6 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         Datas datas = (Datas)DataManagers.Load(PhotonNetwork.NickName + ".ToT");
         inventory.coinsCount = datas.nbr_piece;
+        inventory.SecondChanceCount = datas.secondChance;
         god.UpdateMaxHealth(datas.hit_points-(int)god.MaxHitPoints);
         god.HealPlayer(datas.hit_points);
         CurrentRooms = datas.current_etage;

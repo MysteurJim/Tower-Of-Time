@@ -1482,7 +1482,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 48
   m_TargetDisplay: 0
 --- !u!114 &1742557271920105687
 MonoBehaviour:
@@ -1538,6 +1538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 1742557271050452289}
   menu: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1742557271924439788
 GameObject:
   m_ObjectHideFlags: 0

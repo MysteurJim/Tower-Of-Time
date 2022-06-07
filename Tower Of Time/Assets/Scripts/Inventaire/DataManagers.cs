@@ -24,6 +24,16 @@ public class DataManagers
         return entity;
     }
 
+    public static void Rename(string fileName, string newfileName)
+    {
+        File.Move(Application.persistentDataPath + "/" + fileName, Application.persistentDataPath + "/" + newfileName);
+    }
+
+    public static void Delete(string fileName)
+    {
+        File.Delete(Application.persistentDataPath + "/" + fileName);
+    }
+
     public static List<string> ReadSave()
     {
         string res;
