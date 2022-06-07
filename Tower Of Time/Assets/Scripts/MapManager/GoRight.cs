@@ -15,6 +15,5 @@ public class GoRight : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(Current.HalfWidth, 0, 3);
-        Debug.Log($"Loaded right door at {transform.position.ToString()}");
     }
 }

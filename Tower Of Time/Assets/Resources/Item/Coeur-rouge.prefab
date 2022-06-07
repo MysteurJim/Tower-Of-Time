@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8233974791358895404}
   - component: {fileID: 8233974791358895411}
   - component: {fileID: 8233974791358895410}
+  - component: {fileID: -8884951158820572617}
   m_Layer: 0
   m_Name: Coeur-rouge
   m_TagString: Untagged
@@ -112,4 +113,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a8cf153f621af4eb5420334dfffd94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 10
+  healthPoints: 150
+--- !u!114 &-8884951158820572617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233974791358895409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: 0}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

@@ -15,6 +15,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4241.9873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 176.0756
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 848
+      objectReference: {fileID: 0}
     - target: {fileID: 6278341557407862779, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Name
       value: Minotaure
@@ -22,6 +38,34 @@ PrefabInstance:
     - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Text
       value: Minotaure
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 583.6599
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 154.1301
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9.000137
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 933.49194
       objectReference: {fileID: 0}
     - target: {fileID: 8147995139939100496, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Sprite
@@ -33,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8147995139939100498, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Name
-      value: Minotaure Variant
+      value: Minotaure
       objectReference: {fileID: 0}
     - target: {fileID: 8147995139939100503, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_RootOrder

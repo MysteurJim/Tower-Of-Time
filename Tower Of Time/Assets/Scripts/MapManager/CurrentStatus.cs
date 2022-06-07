@@ -11,8 +11,10 @@ namespace CurrentStatus
         public static Map Map { get; set; }
         public static int x { get; set; }
         public static int y { get; set; }
+        public static Room room => Map[x, y];
         public const float HalfWidth = 25;
-        public const float HalfHeight = 12; 
+        public const float HalfHeight = 12.25f; 
+        public const float HeightOffset = .75f;
 
 
         public static List<GameObject> LivingEnemies { get; set; } 

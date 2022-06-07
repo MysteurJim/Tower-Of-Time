@@ -20,8 +20,6 @@ public class StatusEffectsManager : MonoBehaviour
 
         for (int i = 0; i < transform.childCount && (visuals = transform.GetChild(i)).name != "Effects"; i++)
             continue;
-
-        
     }
 
     public void AddEffect(string effect)

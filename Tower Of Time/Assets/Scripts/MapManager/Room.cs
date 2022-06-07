@@ -16,6 +16,7 @@ public class Room
     protected RoomType type;
     protected int level;
     protected List<(string, float, float, Quaternion)> entities; // Saves entities as (name, pos.x, pos.y, rotation) as required by PhotonNetwork.Instantiate :unamused:
+    protected bool cleared;
 
     public Map Map => map;
     public (int, int) Pos => pos;
@@ -38,6 +39,7 @@ public class Room
 
     public Room(Map map, int x, int y, int level, RoomType type = RoomType.Intermediate)
     {
+        cleared = false;
         this.map = map;
         this.map[x, y] = this;
         pos = (x, y);
@@ -69,8 +71,8 @@ public class Room
     }
 
     IEnumerator WaitForClear()
-    {
-        yield return null;
+    {    
+        yield return new WaitForSeconds(0.1f);
 
         Spawn();
 
@@ -83,21 +85,54 @@ public class Room
             }
             Debug.Log(Living);
 
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return null;
+
+        cleared = true;
+
+        Debug.Log(type == RoomType.BossRoom);
+
+        if (type == RoomType.Intermediate && UnityEngine.Random.value < .5)
+        {
+            Debug.Log("Spawning Coin");
+            entities.Add(("Item/Pièce", 0, 0, Quaternion.identity));
+            PhotonNetwork.Instantiate("Item/Pièce", new Vector2(0, 0), Quaternion.identity);
         }
 
         if (type == RoomType.BossRoom)
         {
+            Debug.Log("Spawning Ladder");
             entities.Add(("Portes/Echelle", 0, 0, Quaternion.identity));
-            PhotonNetwork.Instantiate("Portes/Echelle", new Vector3(0, 0, 3), Quaternion.identity);
+            PhotonNetwork.Instantiate("Portes/Echelle", new Vector2(0, 0), Quaternion.identity);
+
+            int ToSpawn = PseudoNormalDistrib(1,2);
+
+            for (int i = 0; i < ToSpawn; i++)
+            {
+                entities.Add(("Item/Pièce", 0, 0, Quaternion.identity));
+                PhotonNetwork.Instantiate("Item/Pièce", new Vector2(2 * (i++) - ToSpawn + 1, -Current.HalfHeight / 2 - Current.HeightOffset), Quaternion.identity);
+            }
         }
 
         
         Debug.Log("Cleared");
 
-        entities.Where<(string, float, float, Quaternion)>(entity => entity.Item1.Substring(0, Min(entity.Item1.Length, "Méchant".Length)) == "Méchant")
-                .ToList<(string, float, float, Quaternion)>()
-                .ForEach(enemy => entities.Remove(enemy));
+        List<(string, float, float, Quaternion)> ennemis = new List<(string, float, float, Quaternion)>();
+
+        for (int i = 0; i < entities.Count;)
+        {
+            string name = entities[i].Item1;
+            if (name.Substring(0, Min(name.Length, "Méchant".Length)) == "Méchant")
+            {
+                entities.RemoveAt(i);
+            }
+            else
+            {
+                i++;
+            }
+        }
     }
 
     private int PseudoNormalDistrib(int min, int avg) // genere un nombre aleatoire entre min et 2 * avg - min
@@ -129,7 +164,7 @@ public class Room
 
         if (type == RoomType.Intermediate)
         {
-            int toAdd = PseudoNormalDistrib(3, 5);
+            int toAdd = PseudoNormalDistrib(2, 4);
             string[] minions = Current.Minions();
 
             for (int i = 0; i < toAdd; i++)
@@ -149,7 +184,18 @@ public class Room
             {
                 Debug.Log(entity.Item1);
                 GameObject curr = PhotonNetwork.Instantiate(entity.Item1, new Vector2(entity.Item2, entity.Item3), entity.Item4);
-                if (curr.tag == "Ennemi") Current.LivingEnemies.Add(curr);
+                if (curr.tag == "Ennemi")
+                {
+                    Debug.Log($"Spawning enemy cleared{(cleared?"":"n't")}");
+                    if (!cleared)
+                    {
+                        Current.LivingEnemies.Add(curr);
+                    }
+                    else
+                    {
+                        PhotonNetwork.Destroy(curr);
+                    }
+                }
             });
         }
     }

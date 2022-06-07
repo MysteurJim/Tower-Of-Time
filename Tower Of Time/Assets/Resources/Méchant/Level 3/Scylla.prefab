@@ -15,6 +15,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4927.3535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 211.1761
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1073
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925017675047517872, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 834
+      objectReference: {fileID: 0}
     - target: {fileID: 6278341557407862779, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Name
       value: Scylla
@@ -22,6 +38,34 @@ PrefabInstance:
     - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Text
       value: Scylla
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513203448221127989, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 677.9601
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 184.8558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1072.9998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704966584200147732, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 936.5351
       objectReference: {fileID: 0}
     - target: {fileID: 8147995139939100496, guid: 02b0126d090ec5242ab1b5c7a87acd02, type: 3}
       propertyPath: m_Sprite

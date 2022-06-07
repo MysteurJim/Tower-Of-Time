@@ -9,13 +9,14 @@ public class GoDown : MonoBehaviour
     {
         GameObject collided = collision.gameObject;
         if (Current.Cleared && collided.tag == "Player")
+        {
             Current.Map.Goto("Bas");
+        }
     }
     
     void Start()
     {
-        transform.position = new Vector3(0, -Current.HalfHeight, 3);
-        Debug.Log($"Loaded down door at {transform.position.ToString()}, is{(GetComponent<Renderer>().isVisible ? "" : "n't")} visible");
+        transform.position = new Vector3(0, -Current.HalfHeight - Current.HeightOffset, 3);
     }
 
     void OnDrawGizmos()

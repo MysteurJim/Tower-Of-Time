@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class EnnemiController : MonoBehaviour
 {
@@ -39,7 +40,14 @@ public class EnnemiController : MonoBehaviour
         this.hitPoints -= damage * (1 - armor / (armor + 50));
 
         if (this.hitPoints <= 0)
+        {
+            float rand = UnityEngine.Random.value;
+            if (rand < .5)
+            {
+                PhotonNetwork.Instantiate("Item/Coeur-rouge", transform.position, Quaternion.identity);
+            }
             GameObject.Destroy(this.gameObject);
+        }
         
         HealthBar.SetHealth(hitPoints);
         StartCoroutine(TookDamage());
@@ -58,7 +66,6 @@ public class EnnemiController : MonoBehaviour
     private IEnumerator BurnCoroutine(WaitForSeconds duration, float damage)
     {
         flame.SetActive(true);
-        Debug.Log("Set your heart ablaze!");
 
         bool isBurning = true;
         effects.AddEffect("Burn");
@@ -85,8 +92,6 @@ public class EnnemiController : MonoBehaviour
     public void Stun(WaitForSeconds duration) => StartCoroutine(StunCoroutine(duration));
     private IEnumerator StunCoroutine(WaitForSeconds duration)
     {
-        Debug.Log("Bonk");
-
         bool isStunned = true;
         effects.AddEffect("Stun");
         shooter.StopShooting();

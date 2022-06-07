@@ -3,6 +3,7 @@ using static System.Math;
 using UnityEngine;
 using CurrentStatus;
 using System.Linq;
+using Photon.Pun;
 
 public class Map
 {
@@ -83,27 +84,41 @@ public class Map
             }
             res += "|\n";
         }
-
-        Debug.Log(res + $"\n{Current.x},{Current.y}");
     }
     public void Goto(string direction)   
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        int i;
+
         switch (direction.ToLower())
         {
             case "haut":
                 Current.y -= 1;
+                i = 0;
+                if (PhotonNetwork.IsMasterClient)
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, -Current.HalfHeight / 2 - Current.HeightOffset));
                 break;
 
             case "bas":
                 Current.y += 1;
+                i = 0;
+                if (PhotonNetwork.IsMasterClient)
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, Current.HalfHeight / 2 - Current.HeightOffset));
                 break;
 
             case "gauche":
                 Current.x -= 1;
+                i = 0;
+                if (PhotonNetwork.IsMasterClient)
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(Current.HalfWidth, 2 * (i++) - players.Length + 1));
                 break;
 
             case "droite":
                 Current.x += 1;
+                
+                i = 0;
+                if (PhotonNetwork.IsMasterClient)
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(-Current.HalfWidth, 2 * (i++) - players.Length + 1));
                 break;
 
             case "start":

@@ -14,6 +14,7 @@ public static class GameLauncher
 
     public static void UpOneLevel()
     {
+        Debug.Log("Going up!");
         new Map(Current.level + 1);
         Current.Map.Goto("Start");
         Current.Map.Print();

@@ -14,7 +14,6 @@ public class GoUp : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(0, Current.HalfHeight, 3);
-        Debug.Log($"Loaded up door at {transform.position.ToString()}");
+        transform.position = new Vector3(0, Current.HalfHeight - Current.HeightOffset, 3);
     }
 }
