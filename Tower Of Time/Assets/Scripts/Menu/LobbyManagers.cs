@@ -106,7 +106,7 @@ public class LobbyManagers : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartForOther()
     {
-        PhotonNetwork.LoadLevel("Salle Int Medusa");
+        PhotonNetwork.LoadLevel("ChooseCharacter");
     }
 
     public void RPCNickname(Text text)
