@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8899463227847158488, guid: 66508f7654d8a0c4ea2a69d4b1b10790, type: 3}
+    - target: {fileID: 3733907846610761412, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_Value
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733907846610761412, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_MaxValue
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145910952924670065, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: initialHitPoints
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 5242712224829818778, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: sceneViewId
       value: 0

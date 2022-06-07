@@ -49,9 +49,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3733907846610761412, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_Value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733907846610761412, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_MaxValue
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4145910952924670065, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: HealthBar
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145910952924670065, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: initialHitPoints
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5242712224829818778, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: sceneViewId
@@ -180,6 +192,14 @@ PrefabInstance:
     - target: {fileID: 5505411112055051631, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: DesiredDistanceMin
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776022449625294218, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776022449625294218, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6866948656181918334, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_RootOrder
