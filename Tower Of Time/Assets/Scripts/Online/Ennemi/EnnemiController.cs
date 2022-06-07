@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnnemiController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class EnnemiController : MonoBehaviour
     public StatusEffectsManager Effects => effects;
     public EnemiShoot Shooter => shooter;
     public EnnemiMouvement Movement => movement;
+
+    public GameObject flame;
 
     private void Start()
     {
@@ -54,6 +57,7 @@ public class EnnemiController : MonoBehaviour
     public void Burn(WaitForSeconds duration, float damage) => StartCoroutine(BurnCoroutine(duration, damage));
     private IEnumerator BurnCoroutine(WaitForSeconds duration, float damage)
     {
+        flame.SetActive(true);
         Debug.Log("Set your heart ablaze!");
 
         bool isBurning = true;
@@ -75,6 +79,7 @@ public class EnnemiController : MonoBehaviour
         }
 
         effects.RemoveEffect("Burn");
+        flame.SetActive(false);
     }
 
     public void Stun(WaitForSeconds duration) => StartCoroutine(StunCoroutine(duration));
@@ -85,7 +90,7 @@ public class EnnemiController : MonoBehaviour
         bool isStunned = true;
         effects.AddEffect("Stun");
         shooter.StopShooting();
-        
+        movement.stun = true;
         IEnumerator StayStunned()
         {
             yield return duration;
@@ -100,5 +105,6 @@ public class EnnemiController : MonoBehaviour
         shooter.StartShooting();
         
         effects.RemoveEffect("Stun");
+        movement.stun = false;
     }
 }

@@ -54,9 +54,12 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("e"))
                 god.UseE();
 
-            if (Input.GetKeyDown("p"))
-                CurrentStatus.Current.Map[CurrentStatus.Current.Map.Boss.Item1, CurrentStatus.Current.Map.Boss.Item2]?.Goto(this);
-            
+            if (Input.GetKeyDown("r"))
+                god.UseR();
+
+            if (Input.GetKeyDown("f"))
+                god.UseF();
+
         }
        
     }
@@ -93,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         Datas datas = (Datas)DataManagers.Load(PhotonNetwork.NickName + ".ToT");
         inventory.coinsCount = datas.nbr_piece;
-        god.UpdateMaxHealth(datas.hit_points);
+        god.UpdateMaxHealth(datas.hit_points-(int)god.MaxHitPoints);
         god.HealPlayer(datas.hit_points);
         CurrentRooms = datas.current_etage;
     }

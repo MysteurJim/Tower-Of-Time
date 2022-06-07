@@ -13,12 +13,12 @@ public class CollisionHandlerForZoneEffects : MonoBehaviour
     {
         collisions = new List<GameObject>();
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Entered");
-        collisions.Add(collision.gameObject);
+   
+    void OnTriggerEnter2D(Collider2D collision)
+    { 
+        if (collision.tag == "Ennemi")
+            collisions.Add(collision.gameObject);
     }
- 
-    void OnCollisionExit(Collision collision) => collisions.Remove(collision.gameObject);
+    
+    void OnTriggerExit2D(Collider2D collision) => collisions.Remove(collision.gameObject);
 }

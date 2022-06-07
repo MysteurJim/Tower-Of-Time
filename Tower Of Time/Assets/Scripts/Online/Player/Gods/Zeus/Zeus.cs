@@ -16,9 +16,17 @@ public class Zeus : God
         q = playerController.gameObject.GetComponent<BoostVitesse>();
         ((BoostVitesse)q).Setup(this, playerController);
 
-        playerController.gameObject.AddComponent(typeof(TestEnemyTargeting));
-        e = playerController.gameObject.GetComponent<TestEnemyTargeting>();
-        ((TestEnemyTargeting)e).Setup(this, playerController, 0f);
+        playerController.gameObject.AddComponent(typeof(Dotfeu));
+        e = playerController.gameObject.GetComponent<Dotfeu>();
+        ((Dotfeu)e).Setup(this, playerController, 10);
+
+        playerController.gameObject.AddComponent(typeof(Eclair));
+        r = playerController.gameObject.GetComponent<Eclair>();
+        ((Eclair)r).Setup(this, playerController);
+
+        playerController.gameObject.AddComponent(typeof(StunZone));
+        f = playerController.gameObject.GetComponent<StunZone>();
+        ((StunZone)f).Setup(this, playerController,8f);
 
         //A CHANGER
         maxHitPoints = (hitPoints = 100f);

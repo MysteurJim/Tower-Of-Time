@@ -27,6 +27,7 @@ public abstract class ZoneEffect : Ability
         isSelectingZone = false;
         this.duration = new WaitForSeconds(duration);
         this.effect = PhotonNetwork.Instantiate(effectName, zone, Quaternion.identity);
+        DontDestroyOnLoad(this.effect);
         effectRenderer = this.effect.GetComponent<SpriteRenderer>();
         ChangeRendererAlpha(0);
     }
@@ -61,7 +62,10 @@ public abstract class ZoneEffect : Ability
         {
             isSelectingZone = false;
             StopCoroutine(runningCoroutine);
+            effect.transform.position = Vector2.zero;
+            ChangeRendererAlpha(0);
             return true;
+
         }
         else
         {   

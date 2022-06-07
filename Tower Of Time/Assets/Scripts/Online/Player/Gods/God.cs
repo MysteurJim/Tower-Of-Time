@@ -13,6 +13,8 @@ public abstract class God : MonoBehaviour
     protected Ability q;
     protected new string name;
     protected Ability e;
+    protected Ability r;
+    protected Ability f;
 
     protected string arme;
     protected string capacite;
@@ -28,6 +30,8 @@ public abstract class God : MonoBehaviour
     public Ability Q => q;
     public string Name => Name;
     public Ability E => e;
+    public Ability R => r;
+    public Ability F => f;
 
     public string Arme => arme;
     public string Capacite => capacite;
@@ -112,4 +116,8 @@ public abstract class God : MonoBehaviour
     public virtual bool UseQ() => q.TryUse(); 
 
     public virtual bool UseE() => e.TryUse();
+
+    public virtual bool UseR() => r.TryUse();
+
+    public virtual bool UseF() => f.TryUse();
 }

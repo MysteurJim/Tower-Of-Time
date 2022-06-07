@@ -12,13 +12,13 @@ public class EnnemiMouvement : MonoBehaviour
     public float moveSpeed;
 
     //Repoussage
-    public bool knock;
+    public bool stun;
 
     // Reference interne au joueur 
     private GameObject player => GameObject.FindWithTag("Player");
 
     // Parce que velocity existe deja
-    private Vector2 vel;
+    public Vector2 vel;
     private Vector2 acceleration;
 
 
@@ -32,13 +32,13 @@ public class EnnemiMouvement : MonoBehaviour
         this.hitbox = this.GetComponent<BoxCollider2D>();
         this.vel = Vector2.zero;
         m_Started = true;
-        this.knock = false;
+        this.stun = false;
     }
 
     private void Update()
     {
         acceleration = Vector2.zero;
-        if (!knock)
+        if (!stun)
         {
             acceleration += StayInZone();
             acceleration = AddRandom(acceleration);
@@ -49,8 +49,7 @@ public class EnnemiMouvement : MonoBehaviour
         }
         else
         {
-            acceleration = (transform.position-player.transform.position).normalized;
-            this.vel += acceleration;
+            this.vel = Vector2.zero;
         }
         
 
