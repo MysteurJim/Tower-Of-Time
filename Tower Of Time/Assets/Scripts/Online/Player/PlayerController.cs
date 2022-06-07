@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     public string CurrentRooms;
     public bool WithGod = false;
+    public GameObject HB;
+    public GameObject IN;
 
 
     void Start()
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
         }
         DontDestroyOnLoad(transform.gameObject);
         CurrentRooms = "Etage Medusa";
+        HB.SetActive(true);
+        IN.SetActive(true);
     }
 
     // Update is called once per frame

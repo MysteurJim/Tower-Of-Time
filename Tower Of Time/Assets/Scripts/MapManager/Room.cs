@@ -142,13 +142,15 @@ public class Room
 
     public void Spawn()
     {
-        Debug.Log("Spawning");
-        entities.ForEach(entity => 
+        if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log(entity.Item1);
-            GameObject curr = PhotonNetwork.InstantiateRoomObject(entity.Item1, new Vector2(entity.Item2, entity.Item3), entity.Item4);
-            if (curr.tag == "Ennemi") Current.LivingEnemies.Add(curr);
-        });
-        
+            Debug.Log("Spawning");
+            entities.ForEach(entity =>
+            {
+                Debug.Log(entity.Item1);
+                GameObject curr = PhotonNetwork.Instantiate(entity.Item1, new Vector2(entity.Item2, entity.Item3), entity.Item4);
+                if (curr.tag == "Ennemi") Current.LivingEnemies.Add(curr);
+            });
+        }
     }
 }
