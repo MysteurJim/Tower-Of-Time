@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1814181285338849270, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8899463227847158488, guid: 66508f7654d8a0c4ea2a69d4b1b10790, type: 3}
     - target: {fileID: 5242712224829818778, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: sceneViewId
       value: 0
@@ -73,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051628, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Name
-      value: Ennemi (2) Variant
+      value: Titan 1
       objectReference: {fileID: 0}
     - target: {fileID: 5505411112055051630, guid: fc5b1384ab4f2b1479a99a0183ed84e1, type: 3}
       propertyPath: m_Size.x

@@ -506,8 +506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 8094854361686592923, guid: 0925af67f8ffc83409cead107d0e16b8, type: 3}
-  minDamage: 25
-  maxDamage: 25
+  minDamage: 50
+  maxDamage: 50
   projectilForce: 10
   LuncherFire: {fileID: 6499501793534401470}
 --- !u!114 &7154442849792545474
