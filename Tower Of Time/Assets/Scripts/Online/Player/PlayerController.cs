@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("e"))
                 god.UseE();
 
+            if (Input.GetKeyDown("p"))
+                CurrentStatus.Current.Map[CurrentStatus.Current.Map.Boss.Item1, CurrentStatus.Current.Map.Boss.Item2]?.Goto(this);
             
         }
        

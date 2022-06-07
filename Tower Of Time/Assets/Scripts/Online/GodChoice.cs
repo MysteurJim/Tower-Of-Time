@@ -116,7 +116,7 @@ public class GodChoice : MonoBehaviour
 
         }*/
 
-        GameLauncher.LaunchNewGame(this);
+        GameLauncher.LaunchNewGame();
     }
 
     public void NextRoomOnline()

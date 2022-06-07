@@ -21,6 +21,8 @@ public class Map
 
     public int DistToBoss(int x, int y) => Abs(boss.Item1 - x) + Abs(boss.Item1 - y);
     public int DistToBoss(Room room) => Abs(boss.Item1 - room.x) + Abs(boss.Item1 - room.y);
+    public int DistToStart(int x, int y) => Abs(start.Item1 - x) + Abs(start.Item1 - y);
+    public int DistToStart(Room room) => Abs(start.Item1 - room.x) + Abs(start.Item1 - room.y);
     public Room this[int x, int y]
     { 
         get => this.floor[x,y];
@@ -45,11 +47,11 @@ public class Map
         this[start.Item1, start.Item2] = startRoom;
 
         Room furthest = deadEnds[0];
-        int maxDist = DistToBoss(furthest);
+        int maxDist = DistToStart(furthest);
 
         foreach (Room deadEnd in deadEnds.Where<Room>(room => this[room.Pos.Item1, room.Pos.Item2] == room))
         {
-            int currDist = DistToBoss(deadEnd);
+            int currDist = DistToStart(deadEnd);
             if (currDist > maxDist)
             {
                 furthest = deadEnd;
@@ -58,6 +60,7 @@ public class Map
         }
 
         furthest.SetType(RoomType.BossRoom);
+        boss = (furthest.x, furthest.y);
 
         Populate();
     }

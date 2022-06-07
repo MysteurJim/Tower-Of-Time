@@ -992,7 +992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
       propertyPath: playlist.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
       propertyPath: playlist.Array.data[0]
@@ -1002,6 +1002,30 @@ PrefabInstance:
       propertyPath: playlist.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: b1a3fc019e27e304789cde1f908862d3, type: 3}
+    - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
+      propertyPath: playlist.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 43767db87166c684594967fc4759596e, type: 3}
+    - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
+      propertyPath: playlist.Array.data[0].name
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
+      propertyPath: playlist.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 97b1ba187c99ac94e8a285777b400f54, type: 3}
+    - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
+      propertyPath: playlist.Array.data[1].name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
+      propertyPath: playlist.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b1a3fc019e27e304789cde1f908862d3, type: 3}
+    - target: {fileID: 7043925263370089138, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
+      propertyPath: playlist.Array.data[2].name
+      value: Int
+      objectReference: {fileID: 0}
     - target: {fileID: 7043925263370089141, guid: 3d7ccd40334369b478bd9fbdfeb4de8d, type: 3}
       propertyPath: m_Name
       value: AudioManager

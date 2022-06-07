@@ -32,7 +32,7 @@ public class Room
         get => pos.Item2;
         protected set => pos = (pos.Item1, value);
     }
-    public string sceneName => "Salle " + 
+    public string sceneName => "Scenes/Multi/Salle " + 
                                 type switch { RoomType.BossRoom => "Boss ", _ => "Int "} + 
                                 level switch { 1 => "Medusa", 2 => "Minotaure", 3 => "Charybde et Scylla", _ => "Cronos"};
 
@@ -65,6 +65,7 @@ public class Room
         Current.LivingEnemies = new List<GameObject>();
         SceneManager.LoadScene(sceneName);
         mono.StartCoroutine(WaitForClear());
+        StaticAudioManager.TryChangeClip(type switch { RoomType.BossRoom => "Boss", _ => "Int"});
     }
 
     IEnumerator WaitForClear()
@@ -85,6 +86,13 @@ public class Room
             yield return null;
         }
 
+        if (type == RoomType.BossRoom)
+        {
+            entities.Add(("Portes/Echelle", 0, 0, Quaternion.identity));
+            PhotonNetwork.Instantiate("Portes/Echelle", new Vector3(0, 0, 3), Quaternion.identity);
+        }
+
+        
         Debug.Log("Cleared");
 
         entities.Where<(string, float, float, Quaternion)>(entity => entity.Item1.Substring(0, Min(entity.Item1.Length, "Méchant".Length)) == "Méchant")

@@ -5,9 +5,16 @@ using CurrentStatus;
 
 public static class GameLauncher 
 {
-    public static void LaunchNewGame(MonoBehaviour mono)
+    public static void LaunchNewGame()
     {
         new Map(1);
+        Current.Map.Goto("Start");
+        Current.Map.Print();
+    }
+
+    public static void UpOneLevel()
+    {
+        new Map(Current.level + 1);
         Current.Map.Goto("Start");
         Current.Map.Print();
     }
