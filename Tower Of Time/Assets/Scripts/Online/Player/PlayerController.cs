@@ -67,11 +67,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("f"))
                 god.UseF();
 
-            /*if (Input.GetKeyDown("p"))
+            if (Input.GetKeyDown("p"))
                 CurrentStatus.Current.Map[CurrentStatus.Current.Map.Boss.Item1, CurrentStatus.Current.Map.Boss.Item2].Goto(this);
 
             if (Input.GetKeyDown("i"))
-                invincible ^= true;*/
+                invincible ^= true;
         }
        
     }

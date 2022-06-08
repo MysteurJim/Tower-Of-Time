@@ -119,7 +119,7 @@ public class Room
         
         Debug.Log("Cleared");
 
-        List<(string, float, float, Quaternion)> ennemis = new List<(string, float, float, Quaternion)>();
+        List<string> ennemis = new List<string>();
 
         for (int i = 0; i < entities.Count;)
         {
@@ -146,23 +146,23 @@ public class Room
 
     public void Populate()
     {
-        entities.Add(("CompteurBoss", 0, 0, Quaternion.identity));
-
-        if (map[x, y - 1] != null)
+        if (map[x - 1, y] != null)
             entities.Add(("Portes/Porte Haut", 0, Current.HalfHeight, Quaternion.identity));
 
-        if (map[x, y + 1] != null)
+        if (map[x + 1, y] != null)
             entities.Add(("Portes/Porte Bas", 0, -Current.HalfHeight, Quaternion.AngleAxis(180, Vector3.forward)));
 
-        if (map[x - 1, y] != null)
+        if (map[x, y + 1] != null)
             entities.Add(("Portes/Porte Gauche", -Current.HalfWidth, 0, Quaternion.AngleAxis(90, Vector3.forward)));
 
-        if (map[x + 1, y] != null)
+        if (map[x, y - 1] != null)
             entities.Add(("Portes/Porte Droite", Current.HalfWidth, 0, Quaternion.AngleAxis(270, Vector3.forward)));
 
 
         if (type == RoomType.BossRoom)
             System.Array.ForEach<string>(Current.Boss(), x => entities.Add((x, 0, 0, Quaternion.identity)));
+        else
+            entities.Add(("CompteurBoss", 0, 0, Quaternion.identity));
 
         if (type == RoomType.Intermediate)
         {
@@ -175,6 +175,7 @@ public class Room
                               UnityEngine.Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2,
                               Quaternion.identity));
         }
+
         if (type == RoomType.StartRoom)
         {
             if (level == 2)

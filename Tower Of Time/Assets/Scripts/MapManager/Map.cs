@@ -84,6 +84,8 @@ public class Map
             }
             res += "|\n";
         }
+
+        Debug.Log(res + $"\nCurrent : ({Current.room.x}, {Current.room.x})\nBoss : ({boss.Item1}, {boss.Item2})");
     }
     public void Goto(string direction)   
     {
@@ -93,28 +95,28 @@ public class Map
         switch (direction.ToLower())
         {
             case "haut":
-                Current.y -= 1;
+                Current.x -= 1;
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
                     System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, -Current.HalfHeight / 2 - Current.HeightOffset + 3));
                 break;
 
             case "bas":
-                Current.y += 1;
+                Current.x += 1;
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
                     System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, Current.HalfHeight / 2 - Current.HeightOffset - 3));
                 break;
 
             case "gauche":
-                Current.x -= 1;
+                Current.y += 1;
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
                     System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(Current.HalfWidth - 3, 2 * (i++) - players.Length + 1));
                 break;
 
             case "droite":
-                Current.x += 1;
+                Current.y -= 1;
                 
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
