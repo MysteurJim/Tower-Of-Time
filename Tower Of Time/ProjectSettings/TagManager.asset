@@ -8,6 +8,7 @@ TagManager:
   - Ennemi
   - Projectile
   - Bullet
+  - Compteur
   layers:
   - Default
   - TransparentFX
