@@ -252,7 +252,7 @@ MonoBehaviour:
   initialHitPoints: 100
   initialArmor: 0
   HealthBar: {fileID: 7255605246424485089}
-  flame: {fileID: 0}
+  flame: {fileID: 3371919392414362351}
 --- !u!114 &1814181285338849270
 MonoBehaviour:
   m_ObjectHideFlags: 0

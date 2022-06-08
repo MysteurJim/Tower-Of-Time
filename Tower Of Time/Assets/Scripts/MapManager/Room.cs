@@ -178,7 +178,7 @@ public class Room
         if (type == RoomType.StartRoom)
         {
             if (level == 2)
-                entities.Add(("Item/Coeur-vert", Current.HalfWidth, Current.HalfHeight / 2 - Current.HeightOffset, Quaternion.identity));
+                entities.Add(("Item/Coeur-vert", Current.HalfWidth/2, Current.HalfHeight / 2 - Current.HeightOffset, Quaternion.identity));
 
             if (level == 3)
                 entities.Add(("Item/Coeur-jaune", 0, 0, Quaternion.identity));

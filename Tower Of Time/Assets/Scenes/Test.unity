@@ -327,5 +327,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoneFoudre
       objectReference: {fileID: 0}
+    - target: {fileID: 5200971357779016183, guid: 6dff717e69fb07347abf401e4746cd4a, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dff717e69fb07347abf401e4746cd4a, type: 3}

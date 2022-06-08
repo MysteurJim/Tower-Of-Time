@@ -179,7 +179,6 @@ public class GodChoice : MonoBehaviour
         god.Setup(playerControl);
         button.interactable = true;
         playerControl.barManager.SetMaxHealth(god.HitPoints);
-        Dieu1.interactable = false;
         Dieu2.interactable = false;
         MenuZeus.SetActive(true);
 
@@ -203,7 +202,6 @@ public class GodChoice : MonoBehaviour
        button.interactable = true;
        playerControl.barManager.SetMaxHealth(god.HitPoints);
         Dieu1.interactable = false;
-        Dieu2.interactable = false;
         PhotonNetwork.NickName = save_name.text;
         playerControl.loadDatas();
     }
