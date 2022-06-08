@@ -44,7 +44,23 @@ public class EnnemiController : MonoBehaviour
             float rand = UnityEngine.Random.value;
             if (rand < .5)
             {
+                CurrentStatus.Current.room.Entities.Add(("Item/Coeur-rouge", transform.position.x, transform.position.y, Quaternion.identity));
                 PhotonNetwork.Instantiate("Item/Coeur-rouge", transform.position, Quaternion.identity);
+            }
+
+            for (int i = 0; i < CurrentStatus.Current.room.Entities.Count;)
+            {
+                string currName = CurrentStatus.Current.room.Entities[i].Item1;
+                float currX = CurrentStatus.Current.room.Entities[i].Item2;
+                float currY = CurrentStatus.Current.room.Entities[i].Item3;
+                if (currName.Substring(0, Math.Min(0, "Méchant".Length)) == "Méchant" && (Vector2)transform.position == new Vector2(currX, currY))
+                {
+                    CurrentStatus.Current.room.Entities.RemoveAt(i);
+                }
+                else
+                {
+                    i++;
+                }
             }
             GameObject.Destroy(this.gameObject);
         }

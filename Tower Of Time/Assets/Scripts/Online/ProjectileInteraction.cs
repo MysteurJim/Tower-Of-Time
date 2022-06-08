@@ -14,7 +14,9 @@ public class ProjectileInteraction : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") & this.tag == "Bullet")
         {
             PhotonNetwork.Destroy(this.gameObject);
-            collision.gameObject.GetComponent<PlayerController>().God.TakeHit(damage);
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (!player.invincible)
+                player.God.TakeHit(damage);
         }
     }
 }

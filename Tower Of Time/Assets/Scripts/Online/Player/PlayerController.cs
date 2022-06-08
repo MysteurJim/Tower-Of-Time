@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool WithGod = false;
     public GameObject HB;
     public GameObject IN;
+    public bool invincible { get; set; }
 
 
     void Start()
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         CurrentRooms = "Etage Medusa";
         HB.SetActive(true);
         IN.SetActive(true);
+        invincible = false;
     }
 
     // Update is called once per frame
@@ -65,9 +67,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("f"))
                 god.UseF();
 
-            if (Input.GetKeyDown("p"))
+            /*if (Input.GetKeyDown("p"))
                 CurrentStatus.Current.Map[CurrentStatus.Current.Map.Boss.Item1, CurrentStatus.Current.Map.Boss.Item2].Goto(this);
 
+            if (Input.GetKeyDown("i"))
+                invincible ^= true;*/
         }
        
     }

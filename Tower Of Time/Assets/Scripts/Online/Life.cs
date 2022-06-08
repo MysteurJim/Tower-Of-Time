@@ -19,7 +19,9 @@ public class Life : MonoBehaviour
             for (int i = 0; i < CurrentStatus.Current.room.Entities.Count;)
             {
                 string currName = CurrentStatus.Current.room.Entities[i].Item1;
-                if (currName.Substring(0, Math.Min(currName.Length, "Coeur-jaune".Length)) == "Coeur-jaune")
+                float currX = CurrentStatus.Current.room.Entities[i].Item2;
+                float currY = CurrentStatus.Current.room.Entities[i].Item3;
+                if (currName == "Item/Coeur-jaune" && (Vector2)transform.position == new Vector2(currX, currY))
                 {
                     CurrentStatus.Current.room.Entities.RemoveAt(i);
                 }

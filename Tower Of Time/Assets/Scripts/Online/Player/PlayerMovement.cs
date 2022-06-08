@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             float vertical = Input.GetAxisRaw("Vertical");
             float horizontal = Input.GetAxisRaw("Horizontal");
             Vector3 input = new Vector3(horizontal, vertical, 0);
-            transform.position += input.normalized * moveSpeed * Time.deltaTime;
+            transform.position += input.normalized * moveSpeed * Time.deltaTime * (gameObject.GetComponent<PlayerController>().God.dead ? 0 : 1);
 
             if (vertical > 0)
             {

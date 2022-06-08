@@ -52,7 +52,7 @@ namespace CurrentStatus
                                   "Méchant/Level 1/Cobra"};
 
                 case 2:
-                    return new []{"Méchant/Level 2/Puberté",
+                    return new []{"Méchant/Level 2/Puberte",
                                   "Méchant/Level 2/Superman",
                                   "Méchant/Level 2/Taureau"};
 

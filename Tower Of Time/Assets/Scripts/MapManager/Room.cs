@@ -67,7 +67,6 @@ public class Room
         Current.LivingEnemies = new List<GameObject>();
         SceneManager.LoadScene(sceneName);
         mono.StartCoroutine(WaitForClear());
-        StaticAudioManager.TryChangeClip(type switch { RoomType.BossRoom => "Boss", _ => "Int"});
     }
 
     IEnumerator WaitForClear()
@@ -75,6 +74,7 @@ public class Room
         yield return new WaitForSeconds(0.1f);
 
         Spawn();
+        GameObject.FindGameObjectWithTag("Compteur").transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = map.DistToBoss(this).ToString();
 
         while (!Current.Cleared)
         {
@@ -146,6 +146,8 @@ public class Room
 
     public void Populate()
     {
+        entities.Add(("CompteurBoss", 0, 0, Quaternion.identity));
+
         if (map[x, y - 1] != null)
             entities.Add(("Portes/Porte Haut", 0, Current.HalfHeight, Quaternion.identity));
 
@@ -172,6 +174,14 @@ public class Room
                               UnityEngine.Random.Range(0, Current.HalfWidth) - Current.HalfWidth / 2,
                               UnityEngine.Random.Range(0, Current.HalfHeight) - Current.HalfHeight / 2,
                               Quaternion.identity));
+        }
+        if (type == RoomType.StartRoom)
+        {
+            if (level == 2)
+                entities.Add(("Item/Coeur-vert", Current.HalfWidth, Current.HalfHeight / 2 - Current.HeightOffset, Quaternion.identity));
+
+            if (level == 3)
+                entities.Add(("Item/Coeur-jaune", 0, 0, Quaternion.identity));
         }
     }
 

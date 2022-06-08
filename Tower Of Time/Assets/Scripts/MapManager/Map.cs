@@ -96,21 +96,21 @@ public class Map
                 Current.y -= 1;
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
-                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, -Current.HalfHeight / 2 - Current.HeightOffset));
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, -Current.HalfHeight / 2 - Current.HeightOffset + 3));
                 break;
 
             case "bas":
                 Current.y += 1;
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
-                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, Current.HalfHeight / 2 - Current.HeightOffset));
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, Current.HalfHeight / 2 - Current.HeightOffset - 3));
                 break;
 
             case "gauche":
                 Current.x -= 1;
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
-                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(Current.HalfWidth, 2 * (i++) - players.Length + 1));
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(Current.HalfWidth - 3, 2 * (i++) - players.Length + 1));
                 break;
 
             case "droite":
@@ -118,12 +118,14 @@ public class Map
                 
                 i = 0;
                 if (PhotonNetwork.IsMasterClient)
-                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(-Current.HalfWidth, 2 * (i++) - players.Length + 1));
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(-Current.HalfWidth + 3, 2 * (i++) - players.Length + 1));
                 break;
 
             case "start":
                 Current.x = start.Item1;
-                Current.y = start.Item2;
+                Current.y = start.Item2;i = 0;
+                if (PhotonNetwork.IsMasterClient)
+                    System.Array.ForEach<GameObject>(players, player => player.transform.position = new Vector2(2 * (i++) - players.Length + 1, 0));
                 break;
 
             default :

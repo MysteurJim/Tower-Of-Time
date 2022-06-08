@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.053
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -140,6 +140,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6774a7219a1adb41b4356fdaeb8e32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playlist:
-  - {fileID: 8300000, guid: 43767db87166c684594967fc4759596e, type: 3}
+  MusicList: []
   audioSource: {fileID: 7043925263370089139}
